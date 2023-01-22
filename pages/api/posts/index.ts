@@ -1,16 +1,15 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
 import notion from '../../../lib/notion';
 import { server } from '../../../config';
 import { Databases } from '../notion-db';
-
-export interface DbPostIds {
-  name: string;
-  ids: string[];
-}
+import {
+  PageObjectResponse,
+  PartialPageObjectResponse,
+} from '@notionhq/client/build/src/api-endpoints';
+import { DbPostContents } from '../../../lib/type';
 
 export async function getDatabasePostIds(dbId: string) {
-  const arr: string[] = [];
+  const arr: Array<PageObjectResponse | PartialPageObjectResponse> = [];
   await notion.databases
     .query({
       database_id: dbId,
@@ -19,16 +18,30 @@ export async function getDatabasePostIds(dbId: string) {
       ],
     })
     .then((res) => {
-      res.results.map((result) => {
-        arr.push(result.id);
-      });
+      res.results.map(
+        (result: PageObjectResponse | PartialPageObjectResponse) => {
+          arr.push(result);
+        }
+      );
     });
   return arr;
 }
 
+const refinedPost = (data: PageObjectResponse | PartialPageObjectResponse) => {
+  const page = data as PageObjectResponse;
+
+  const id = page.id;
+  const title = page.properties.Title.title[0].plain_text;
+  const description = page.properties.Description.rich_text[0].plain_text;
+  const date = page.properties.Date.date.start;
+  const tags = page.properties.Tags.multi_select;
+
+  return { id, title, description, date, tags };
+};
+
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<any>
+  res: NextApiResponse<Array<DbPostContents>>
 ) {
   const { databases, database_ids } = (await fetch(
     `${server}/api/notion-db`
@@ -36,9 +49,14 @@ export default async function handler(
 
   const result = await Promise.all(
     database_ids.map(async (id: string, index: number) => {
-      const ids = await getDatabasePostIds(id);
+      const contents = await getDatabasePostIds(id);
       const dbName = databases[index];
-      return { name: dbName, ids: ids };
+
+      const posts = contents.map((content) => {
+        return refinedPost(content);
+      });
+
+      return { name: dbName, posts };
     })
   );
   res.status(200).send(result);
