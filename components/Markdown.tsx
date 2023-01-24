@@ -29,7 +29,6 @@ export function Markdown({ content }: { content: string }) {
   const syntaxTheme = oneDark;
   const styleMarkdown = css({
     '.codeStyle, pre, code, code span': {
-      // Your SyntaxHighlighter override styles here
       fontFamily: '"JetBrains Mono", Menlo, Monaco, "Courier New", monospace',
       fontStyle: 'normal',
       fontSize: 16,
@@ -84,7 +83,6 @@ export function Markdown({ content }: { content: string }) {
       textShadow: 'none !important',
     },
     'pre code': {
-      // Your code-block styles
       fontFamily:
         '"JetBrains Mono", Menlo, Monaco, "Courier New", monospace !important',
       '&::before, &::after': { content: 'none' },
@@ -100,6 +98,18 @@ export function Markdown({ content }: { content: string }) {
       background: '#37394e',
       margin: '0 -1.5rem',
       padding: '0 1.5rem',
+    },
+    h1: {
+      fontSize: 32,
+      '@media(max-width: 768px)': {
+        fontSize: 28,
+      },
+    },
+    h2: {
+      fontSize: 24,
+      '@media(max-width: 768px)': {
+        fontSize: 20,
+      },
     },
   });
   const MarkdownComponents: object = {

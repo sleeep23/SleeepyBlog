@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
 import { DbPostContents, PostsType, TagType } from '../lib/type';
+import PostLink from './PostLink';
+import Tags from './Tags';
 
 export default function Posts({ data }: { data: PostsType }) {
   const content = data.map((db: DbPostContents, index) => {
@@ -25,14 +27,15 @@ export default function Posts({ data }: { data: PostsType }) {
           {db.posts?.map((post) => {
             return (
               <div key={post.id}>
-                <p>Id : {post.id}</p>
+                <PostLink id={post.id} />
                 <p>Title : {post.title}</p>
                 <p>Description : {post.description}</p>
                 <p>Date : {post.date}</p>
                 <div>
-                  {post.tags.map((tag: TagType) => {
-                    return <p key={tag.id}>{tag.name}</p>;
-                  })}
+                  {/*{post.tags.map((tag: TagType) => {*/}
+                  {/*  return <p key={tag.id}>{tag.name}</p>;*/}
+                  {/*})}*/}
+                  <Tags tags={post.tags} />
                 </div>
               </div>
             );

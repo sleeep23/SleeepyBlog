@@ -13,9 +13,8 @@ export default function ArticleLayout({
       <Header />
       <div
         css={css`
-          max-width: 980px;
+          max-width: 768px;
           margin: 0 auto;
-          color: black;
         `}
       >
         {children}

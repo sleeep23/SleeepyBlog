@@ -33,7 +33,18 @@ export default function Header() {
   return (
     <>
       <Container>
-        <h2>Logo</h2>
+        <h2>
+          <Link
+            href="/"
+            css={css`
+              :visited {
+                color: black;
+              }
+            `}
+          >
+            Logo
+          </Link>
+        </h2>
         <LinkContainer>
           <li>
             <Link href="/posts">Writings</Link>

@@ -1,13 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import ArticleLayout from '../../components/layout/articleLayout';
-import styled from '@emotion/styled';
 
 import { PostContentType } from '../../lib/type';
 import { useRouter } from 'next/router';
 import { server } from '../../config';
 
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import { Markdown } from '../../components/Markdown';
 
 export const getPostContent = async (id: string) => {
@@ -36,10 +33,8 @@ export default function SinglePost() {
 
   return (
     <ArticleLayout>
-      <p style={{ padding: '20px' }}>Post Id : {postContent?.id}</p>
-      <div style={{ padding: '20px' }}>
-        {postContent && <Markdown content={postContent.content} />}
-      </div>
+      <p>Post Id : {postContent?.id}</p>
+      <div>{postContent && <Markdown content={postContent.content} />}</div>
     </ArticleLayout>
   );
 }
