@@ -15,6 +15,7 @@ export default function ArticleLayout({
         css={css`
           max-width: 980px;
           margin: 0 auto;
+          color: black;
         `}
       >
         {children}

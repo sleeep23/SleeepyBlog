@@ -1,10 +1,14 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import ArticleLayout from '../../components/layout/articleLayout';
-import { useRouter } from 'next/router';
+import styled from '@emotion/styled';
+
 import { PostContentType } from '../../lib/type';
+import { useRouter } from 'next/router';
 import { server } from '../../config';
-import dompurify from 'dompurify';
-import { marked } from 'marked';
+
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { Markdown } from '../../components/Markdown';
 
 export const getPostContent = async (id: string) => {
   const res = await fetch(`${server}/api/posts/${id}`);
@@ -30,26 +34,12 @@ export default function SinglePost() {
     getFn();
   }, [id]);
 
-  const md_to_html = (string: string) => {
-    return dompurify.sanitize(marked.parse(string));
-  };
-
   return (
     <ArticleLayout>
-      <p style={{ padding: '20px' }}>
-        Post Id : <br />
-        {postContent?.id}
-      </p>
-      <p style={{ padding: '20px' }}>
-        Post Markdown : <br />
-        {postContent && (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: md_to_html(postContent.content as string),
-            }}
-          ></div>
-        )}
-      </p>
+      <p style={{ padding: '20px' }}>Post Id : {postContent?.id}</p>
+      <div style={{ padding: '20px' }}>
+        {postContent && <Markdown content={postContent.content} />}
+      </div>
     </ArticleLayout>
   );
 }
