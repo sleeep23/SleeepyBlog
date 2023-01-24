@@ -32,9 +32,6 @@ export default function Posts({ data }: { data: PostsType }) {
                 <p>Description : {post.description}</p>
                 <p>Date : {post.date}</p>
                 <div>
-                  {/*{post.tags.map((tag: TagType) => {*/}
-                  {/*  return <p key={tag.id}>{tag.name}</p>;*/}
-                  {/*})}*/}
                   <Tags tags={post.tags} />
                 </div>
               </div>
