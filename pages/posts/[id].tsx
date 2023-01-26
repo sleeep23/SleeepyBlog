@@ -1,11 +1,16 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import ArticleLayout from '../../components/layout/articleLayout';
+import { css } from '@emotion/react';
 
 import { PostContentType } from '../../lib/type';
 import { useRouter } from 'next/router';
 import { server } from '../../config';
 
 import { Markdown } from '../../components/Markdown';
+
+const sectionStyle = css`
+  margin-top: 40px;
+`;
 
 export const getPostContent = async (id: string) => {
   const res = await fetch(`${server}/api/posts/${id}`);
@@ -33,8 +38,9 @@ export default function SinglePost() {
 
   return (
     <ArticleLayout>
-      <p>Post Id : {postContent?.id}</p>
-      <div>{postContent && <Markdown content={postContent.content} />}</div>
+      <section css={sectionStyle}>
+        {postContent && <Markdown content={postContent.content} />}
+      </section>
     </ArticleLayout>
   );
 }

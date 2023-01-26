@@ -3,15 +3,11 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import Link from 'next/link';
 
-const liStyle = css`
-  height: 100%;
-  padding: 0 8px;
-`;
-
 export default function Header() {
   const Container = styled.div`
     width: 100%;
     height: 60px;
+    padding: 0 20px;
     background-color: white;
     color: black;
     display: flex;
@@ -47,7 +43,22 @@ export default function Header() {
         </h2>
         <LinkContainer>
           <li>
-            <Link href="/posts">Writings</Link>
+            <Link
+              href="/posts"
+              css={css`
+                padding: 4px 8px;
+                border-radius: 6px;
+                :visited {
+                  color: black;
+                }
+                :hover {
+                  transition: 0.15s;
+                  background-color: #e5e8eb;
+                }
+              `}
+            >
+              Writings
+            </Link>
           </li>
         </LinkContainer>
       </Container>

@@ -31,12 +31,14 @@ const refinedPost = (data: PageObjectResponse | PartialPageObjectResponse) => {
   const page = data as PageObjectResponse;
 
   const id = page.id;
-  const title = page.properties.Title.title[0].plain_text;
-  const description = page.properties.Description.rich_text[0].plain_text;
-  const date = page.properties.Date.date.start;
+  const title = page.properties.Title.title[0].plain_text as string;
+  const description = page.properties.Description.rich_text[0]
+    .plain_text as string;
+  const date = page.properties.Date.date.start as string;
   const tags = page.properties.Tags.multi_select;
+  const imgLink = page.cover ? (page.cover.external.url as string) : null;
 
-  return { id, title, description, date, tags };
+  return { id, title, description, date, tags, imgLink };
 };
 
 export default async function handler(

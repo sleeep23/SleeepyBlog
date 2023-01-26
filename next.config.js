@@ -1,14 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: '/posts/post',
-  //       destination: 'https://api.notion.com/',
-  //     },
-  //   ];
-  // },
+  images: {
+    domains: ['www.notion.so'],
+  },
 };
 
 module.exports = nextConfig;

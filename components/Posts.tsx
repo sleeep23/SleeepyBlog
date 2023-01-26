@@ -1,56 +1,46 @@
-import React, { Fragment } from 'react';
-import { DbPostContents, PostsType, TagType } from '../lib/type';
-import PostLink from './PostLink';
-import Tags from './Tags';
+import React, { Fragment, useEffect, useState } from 'react';
+import { PostsType, PostThumbnailType } from '../lib/type';
+import PostCard from './PostCard';
+import { css } from '@emotion/react';
 
-export default function Posts({ data }: { data: PostsType }) {
-  const content = data.map((db: DbPostContents, index) => {
-    return (
-      <div
-        key={index}
-        style={{
-          padding: '20px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '20px',
-        }}
-      >
-        <p>DB : {db.name}</p>
-        <div
-          style={{
-            padding: '20px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '20px',
-          }}
-        >
-          {db.posts?.map((post) => {
-            return (
-              <div key={post.id}>
-                <PostLink id={post.id} />
-                <p>Title : {post.title}</p>
-                <p>Description : {post.description}</p>
-                <p>Date : {post.date}</p>
-                <div>
-                  <Tags tags={post.tags} />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    );
-  });
+const postCardsContainer = css`
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  gap: 40px;
+`;
+
+export default function Posts({
+  data,
+  cntMenu,
+}: {
+  data: PostsType;
+  cntMenu: string;
+}) {
+  const defaultPost = () => {
+    let result: PostThumbnailType[] = [];
+    data.map((item) => {
+      item.posts.map((post) => {
+        result.push(post);
+      });
+    });
+    return result;
+  };
+  console.log(defaultPost());
+  const cntPost =
+    data &&
+    data
+      .filter((item) => {
+        return item.name === cntMenu;
+      })
+      .at(0);
   return (
-    <div
-      style={{
-        padding: '20px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '20px',
-      }}
-    >
-      {content}
+    <div css={postCardsContainer}>
+      {cntMenu === 'All' ? (
+        <PostCard cntPost={defaultPost()} />
+      ) : (
+        <PostCard cntPost={cntPost?.posts} />
+      )}
     </div>
   );
 }

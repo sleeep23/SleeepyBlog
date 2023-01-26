@@ -1,6 +1,6 @@
 export interface DbPostContents {
   name: string;
-  posts?: Array<PostThumbnailType>;
+  posts: Array<PostThumbnailType>;
 }
 
 export interface PostThumbnailType {
@@ -9,6 +9,7 @@ export interface PostThumbnailType {
   description: string;
   date: string;
   tags: Array<TagType>;
+  imgLink: string | null;
 }
 
 export interface PostsType extends Array<DbPostContents> {}
