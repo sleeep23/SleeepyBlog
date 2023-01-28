@@ -3,6 +3,31 @@ import { css } from '@emotion/react';
 import Head from 'next/head';
 import Layout from '../components/layout/layout';
 
+const containerStyle = css`
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const landingStyle = css`
+  color: white;
+  font-size: 24px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+`;
+
+const introStyle = css`
+  font-size: 40px;
+  padding: 80px;
+`;
+
 export default function Home() {
   return (
     <>
@@ -13,39 +38,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <div
-          css={css`
-            background-color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-          `}
-        >
-          <p
-            css={css`
-              color: black;
-              font-size: 40px;
-              padding: 80px;
-            `}
-          >
-            Hello I&apos;m Sleeep23 👋
-          </p>
-          <div
-            css={css`
-              color: black;
-              font-size: 24px;
-              width: 100%;
-              height: 400px;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
-              background-color: gray;
-            `}
-          >
-            Three.js 사진 들어가는 곳
-          </div>
+        <div css={containerStyle}>
+          <section css={landingStyle}>
+            <p css={introStyle}>Hello I&apos;m Sleeep23 👋</p>
+          </section>
         </div>
       </Layout>
     </>

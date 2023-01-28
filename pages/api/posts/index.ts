@@ -31,11 +31,16 @@ const refinedPost = (data: PageObjectResponse | PartialPageObjectResponse) => {
   const page = data as PageObjectResponse;
 
   const id = page.id;
+  // @ts-ignore
   const title = page.properties.Title.title[0].plain_text as string;
+  // @ts-ignore
   const description = page.properties.Description.rich_text[0]
     .plain_text as string;
+  // @ts-ignore
   const date = page.properties.Date.date.start as string;
+  // @ts-ignore
   const tags = page.properties.Tags.multi_select;
+  // @ts-ignore
   const imgLink = page.cover ? (page.cover.external.url as string) : null;
 
   return { id, title, description, date, tags, imgLink };

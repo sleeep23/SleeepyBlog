@@ -9,6 +9,15 @@ const sectionStyle = css`
   justify-content: center;
   align-items: center;
   gap: 40px;
+  button {
+    color: black;
+    &:hover {
+      text-decoration: underline;
+    }
+    &:visited {
+      color: unset;
+    }
+  }
 `;
 
 function PostsMenu({

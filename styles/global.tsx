@@ -1,7 +1,7 @@
-import { Global } from '@emotion/react';
+import { css, Global } from '@emotion/react';
 
 const font_default =
-  '"JetBrains Mono", Menlo, Monaco, "Courier New", monospace';
+  '"Spoqa Han Sans Neo", "JetBrains Mono", Menlo, Monaco, "Courier New", monospace, "sans-serif"';
 
 // Theme colors
 const light = '#e4e9f8';
@@ -32,6 +32,11 @@ const sunset = 'linear-gradient(to bottom,#1b0e24 0%,#2b174c 50%,#381d6e 100%)';
 export function GlobalStyles() {
   return (
     <>
+      <Global
+        styles={css`
+          @import url('//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css');
+        `}
+      />
       <Global
         styles={{
           '@font-face': {
