@@ -2,6 +2,8 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Layout from '../components/layout/layout';
+import Landing from '../components/Landing';
+import { isEqualNode } from 'next/dist/client/head-manager';
 
 const containerStyle = css`
   background-color: white;
@@ -41,6 +43,9 @@ export default function Home() {
         <div css={containerStyle}>
           <section css={landingStyle}>
             <p css={introStyle}>Hello I&apos;m Sleeep23 👋</p>
+          </section>
+          <section css={landingStyle}>
+            <Landing />
           </section>
         </div>
       </Layout>
