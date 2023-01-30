@@ -2,32 +2,37 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Layout from '../components/layout/layout';
-import Landing from '../components/Landing';
-import { isEqualNode } from 'next/dist/client/head-manager';
+import LandingBackground from '../components/LandingBackground';
+import LandingSkills from '../components/LandingSkills';
+import LandingExperiences from '../components/LandingExperiences';
+
+const layout = css`
+  width: 100vw;
+  padding: 120px 100px;
+`;
 
 const containerStyle = css`
   background-color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
 
 const landingStyle = css`
   color: white;
   font-size: 24px;
-  width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
   background-color: gray;
+  gap: 20px;
 `;
 
 const introStyle = css`
+  width: 100%;
   font-size: 40px;
   padding: 80px;
+  line-height: 1.4;
 `;
 
 export default function Home() {
@@ -41,11 +46,24 @@ export default function Home() {
       </Head>
       <Layout>
         <div css={containerStyle}>
-          <section css={landingStyle}>
-            <p css={introStyle}>Hello I&apos;m Sleeep23 👋</p>
+          <section css={[layout, landingStyle]}>
+            <p>Hi 👋</p>
+            <div>
+              My name is <span>Dongho Seo</span>
+            </div>
+            <p
+              css={css`
+                font-size: 18px;
+              `}
+            >
+              I&apos;m a Front-End Developer focused on
+              <br /> enhancing user experience and interface.
+            </p>
           </section>
-          <section css={landingStyle}>
-            <Landing />
+          <section>
+            <LandingBackground />
+            <LandingSkills />
+            <LandingExperiences />
           </section>
         </div>
       </Layout>

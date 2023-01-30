@@ -1,11 +1,13 @@
 import React from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, Stars } from '@react-three/drei';
 
 function Landing() {
   return (
     <>
       <Canvas>
+        <color attach="background" args={['black']} />
+        <Stars saturation={0} count={400} speed={0.5} />
         <OrbitControls />
         <mesh>
           <ambientLight intensity={1} />
