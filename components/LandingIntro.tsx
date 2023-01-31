@@ -5,7 +5,7 @@ import Link from 'next/link';
 export const layout = css`
   width: 100%;
   padding: 120px 0;
-  p:nth-child(3) {
+  p:nth-of-type(3) {
     font-size: 22px;
     & > span {
       font-size: inherit;
