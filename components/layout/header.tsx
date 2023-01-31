@@ -38,7 +38,7 @@ export default function Header() {
               }
             `}
           >
-            Logo
+            Sleep23&apos;s Blog
           </Link>
         </h2>
         <LinkContainer>
@@ -46,7 +46,7 @@ export default function Header() {
             <Link
               href="/posts"
               css={css`
-                padding: 4px 8px;
+                padding: 11px 16px;
                 border-radius: 6px;
                 :visited {
                   color: black;

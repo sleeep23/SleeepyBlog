@@ -10,7 +10,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div
         css={css`
           width: 100%;
-          margin: 0 auto;
+          padding: 0 150px;
+          background-color: white;
         `}
       >
         {children}

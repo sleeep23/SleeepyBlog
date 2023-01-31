@@ -1,8 +1,13 @@
 import React from 'react';
-import { contentLayout } from './LandingBackground';
+import { layout } from './LandingIntro';
+import { bgStyle } from './LandingBackground';
 
 function LandingSkills() {
-  return <div css={contentLayout}>Skills Section</div>;
+  return (
+    <section css={[layout, bgStyle]}>
+      <h1>Skills</h1>
+    </section>
+  );
 }
 
 export default LandingSkills;

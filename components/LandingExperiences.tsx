@@ -1,8 +1,13 @@
 import React from 'react';
-import { contentLayout } from './LandingBackground';
+import { layout } from './LandingIntro';
+import { bgStyle } from './LandingBackground';
 
 function LandingExperiences() {
-  return <div css={contentLayout}>Experiences Section</div>;
+  return (
+    <section css={[layout, bgStyle]}>
+      <h1>Experiences</h1>
+    </section>
+  );
 }
 
 export default LandingExperiences;

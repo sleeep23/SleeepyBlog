@@ -1,14 +1,21 @@
 import React from 'react';
+import { layout } from './LandingIntro';
 import { css } from '@emotion/react';
 
-export const contentLayout = css`
-  width: 100%;
-  padding: 100px;
-  background-color: navajowhite;
+export const bgStyle = css`
+  & > h1 {
+    font-size: 24px;
+    border-left: 4px solid gray;
+    padding: 0 16px;
+  }
 `;
 
 function LandingBackground() {
-  return <div css={contentLayout}>Background Section</div>;
+  return (
+    <section css={[layout, bgStyle]}>
+      <h1>Background</h1>
+    </section>
+  );
 }
 
 export default LandingBackground;

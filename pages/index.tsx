@@ -5,34 +5,12 @@ import Layout from '../components/layout/layout';
 import LandingBackground from '../components/LandingBackground';
 import LandingSkills from '../components/LandingSkills';
 import LandingExperiences from '../components/LandingExperiences';
-
-const layout = css`
-  width: 100vw;
-  padding: 120px 100px;
-`;
+import LandingIntro from '../components/LandingIntro';
 
 const containerStyle = css`
   background-color: white;
   display: flex;
   flex-direction: column;
-`;
-
-const landingStyle = css`
-  color: white;
-  font-size: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  background-color: gray;
-  gap: 20px;
-`;
-
-const introStyle = css`
-  width: 100%;
-  font-size: 40px;
-  padding: 80px;
-  line-height: 1.4;
 `;
 
 export default function Home() {
@@ -46,25 +24,10 @@ export default function Home() {
       </Head>
       <Layout>
         <div css={containerStyle}>
-          <section css={[layout, landingStyle]}>
-            <p>Hi 👋</p>
-            <div>
-              My name is <span>Dongho Seo</span>
-            </div>
-            <p
-              css={css`
-                font-size: 18px;
-              `}
-            >
-              I&apos;m a Front-End Developer focused on
-              <br /> enhancing user experience and interface.
-            </p>
-          </section>
-          <section>
-            <LandingBackground />
-            <LandingSkills />
-            <LandingExperiences />
-          </section>
+          <LandingIntro />
+          <LandingBackground />
+          <LandingSkills />
+          <LandingExperiences />
         </div>
       </Layout>
     </>
