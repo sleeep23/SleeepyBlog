@@ -48,6 +48,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.31.0"],\
             ["eslint-config-next", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:13.1.1"],\
             ["eslint-config-prettier", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:8.6.0"],\
+            ["lottie-react", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:2.3.1"],\
             ["marked", "npm:4.2.12"],\
             ["next", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:13.1.1"],\
             ["notion-to-md", "npm:2.5.5"],\
@@ -3740,6 +3741,42 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["lottie-react", [\
+        ["npm:2.3.1", {\
+          "packageLocation": "./.yarn/cache/lottie-react-npm-2.3.1-2c42200039-3f83511eec.zip/node_modules/lottie-react/",\
+          "packageDependencies": [\
+            ["lottie-react", "npm:2.3.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:2.3.1", {\
+          "packageLocation": "./.yarn/__virtual__/lottie-react-virtual-8eda0aa4e0/0/cache/lottie-react-npm-2.3.1-2c42200039-3f83511eec.zip/node_modules/lottie-react/",\
+          "packageDependencies": [\
+            ["lottie-react", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:2.3.1"],\
+            ["@types/react", "npm:18.0.26"],\
+            ["@types/react-dom", "npm:18.0.10"],\
+            ["lottie-web", "npm:5.10.2"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["lottie-web", [\
+        ["npm:5.10.2", {\
+          "packageLocation": "./.yarn/cache/lottie-web-npm-5.10.2-b1628c6dac-9ec80b479d.zip/node_modules/lottie-web/",\
+          "packageDependencies": [\
+            ["lottie-web", "npm:5.10.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["lowlight", [\
         ["npm:1.20.0", {\
           "packageLocation": "./.yarn/cache/lowlight-npm-1.20.0-771a13490e-14a1815d6b.zip/node_modules/lowlight/",\
@@ -4591,6 +4628,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.31.0"],\
             ["eslint-config-next", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:13.1.1"],\
             ["eslint-config-prettier", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:8.6.0"],\
+            ["lottie-react", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:2.3.1"],\
             ["marked", "npm:4.2.12"],\
             ["next", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:13.1.1"],\
             ["notion-to-md", "npm:2.5.5"],\

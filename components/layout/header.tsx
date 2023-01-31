@@ -38,7 +38,7 @@ export default function Header() {
               }
             `}
           >
-            Sleep23&apos;s Blog
+            Sleep23&apos;s Space
           </Link>
         </h2>
         <LinkContainer>

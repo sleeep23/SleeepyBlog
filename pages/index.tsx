@@ -8,7 +8,7 @@ import LandingExperiences from '../components/LandingExperiences';
 import LandingIntro from '../components/LandingIntro';
 
 const containerStyle = css`
-  background-color: white;
+  background-color: inherit;
   display: flex;
   flex-direction: column;
 `;
