@@ -12,7 +12,7 @@ const environment = () => {
     case 'development':
       return 'http://localhost:3000';
     default:
-      return 'http://localhost:3000';
+      return 'https://sleeepy-blog.vercel.app';
   }
 };
 
