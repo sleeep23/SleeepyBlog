@@ -2,15 +2,11 @@ import React, { use, useEffect, useState } from 'react';
 import ArticleLayout from '../../components/layout/articleLayout';
 import Posts from '../../components/Posts';
 import { PostsType } from '../../lib/type';
-import { dev_server, server } from '../../config';
+import { server } from '../../config';
 import PostsMenu from '../../components/PostsMenu';
 
 async function getPosts(): Promise<PostsType> {
-  // When Deploy
   const posts = await fetch(`${server}/api/posts`);
-
-  // When Dev
-  // const posts = await fetch(`${dev_server}/api/posts`);
   return posts.json();
 }
 

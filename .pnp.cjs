@@ -45,6 +45,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.0.10"],\
             ["@types/react-syntax-highlighter", "npm:15.5.6"],\
             ["dompurify", "npm:2.4.3"],\
+            ["env-cmd", "npm:10.1.0"],\
             ["eslint", "npm:8.31.0"],\
             ["eslint-config-next", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:13.1.1"],\
             ["eslint-config-prettier", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:8.6.0"],\
@@ -1835,6 +1836,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["commander", [\
+        ["npm:4.1.1", {\
+          "packageLocation": "./.yarn/cache/commander-npm-4.1.1-22a0fe921b-d7b9913ff9.zip/node_modules/commander/",\
+          "packageDependencies": [\
+            ["commander", "npm:4.1.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["concat-map", [\
         ["npm:0.0.1", {\
           "packageLocation": "./.yarn/cache/concat-map-npm-0.0.1-85a921b7ee-902a9f5d89.zip/node_modules/concat-map/",\
@@ -2118,6 +2128,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["enhanced-resolve", "npm:5.12.0"],\
             ["graceful-fs", "npm:4.2.10"],\
             ["tapable", "npm:2.2.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["env-cmd", [\
+        ["npm:10.1.0", {\
+          "packageLocation": "./.yarn/cache/env-cmd-npm-10.1.0-85470635d6-efef550742.zip/node_modules/env-cmd/",\
+          "packageDependencies": [\
+            ["env-cmd", "npm:10.1.0"],\
+            ["commander", "npm:4.1.1"],\
+            ["cross-spawn", "npm:7.0.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4625,6 +4646,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.0.10"],\
             ["@types/react-syntax-highlighter", "npm:15.5.6"],\
             ["dompurify", "npm:2.4.3"],\
+            ["env-cmd", "npm:10.1.0"],\
             ["eslint", "npm:8.31.0"],\
             ["eslint-config-next", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:13.1.1"],\
             ["eslint-config-prettier", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:8.6.0"],\
