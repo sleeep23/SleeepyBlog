@@ -8,11 +8,11 @@ console.log(cntEnv);
 const environment = () => {
   switch (cntEnv) {
     case 'production':
-      return 'https://sleeepy-blog.vercel.app';
+      return 'https://notion-sleeep23-blog.vercel.app';
     case 'development':
       return 'http://localhost:3000';
     default:
-      return 'https://sleeepy-blog.vercel.app';
+      return 'https://notion-sleeep23-blog.vercel.app';
   }
 };
 
