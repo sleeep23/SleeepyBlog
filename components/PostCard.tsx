@@ -18,13 +18,14 @@ const tagAndDateStyle = css`
 
 const imgStyle = css`
   border-radius: 16px;
-  background-size: cover;
+  object-fit: cover;
+  object-position: center;
 `;
 const contentStyle = css`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
+  width: 528px;
   height: 100%;
   padding: 20px;
   gap: 10px;
@@ -54,7 +55,7 @@ const linkStyle = css`
     }
     & img {
       transform: translateY(-4px);
-      box-shadow: 0 8px 16px -12px #b0b8c1;
+      box-shadow: 0 8px 16px -12px #4e5968;
       transition: 0.3s ease-in-out;
     }
   }
