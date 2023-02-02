@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['www.notion.so'],
+    domains: ['www.notion.so', 'images.unsplash.com'],
   },
   webpack(config) {
     config.module.rules.push({
