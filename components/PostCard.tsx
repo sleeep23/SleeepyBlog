@@ -36,6 +36,7 @@ const linkStyle = css`
   align-items: center;
   gap: 40px;
   width: 100%;
+  color: #f2f4f6;
   h2 p section {
     display: block;
     margin: 4px;
