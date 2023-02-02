@@ -24,7 +24,6 @@ function Tags({ tags }: { tags: Array<TagType> }) {
               border-radius: 4px;
               background-color: ${changeColor(tag.color)};
               font-size: 8px;
-              color: black;
               display: block;
               justify-content: center;
               align-items: center;

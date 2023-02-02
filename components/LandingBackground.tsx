@@ -4,11 +4,18 @@ import { css } from '@emotion/react';
 
 export const bgStyle = css`
   background-color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   & > h1 {
     color: white;
     font-size: 24px;
     border-left: 4px solid gray;
     padding: 0 16px;
+  }
+  & > div {
+    color: white;
   }
 `;
 

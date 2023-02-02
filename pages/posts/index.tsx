@@ -21,7 +21,6 @@ export default function Index() {
     };
     getFn();
   }, []);
-  console.log(posts);
   return (
     <ArticleLayout>
       <PostsMenu setCntMenu={setCntMenu} menuItems={menuItems} />

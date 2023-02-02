@@ -14,7 +14,11 @@ export async function getDatabasePostIds(dbId: string) {
     .query({
       database_id: dbId,
       sorts: [
-        { property: 'Date', direction: 'ascending', timestamp: 'created_time' },
+        {
+          property: 'Date',
+          direction: 'descending',
+          timestamp: 'created_time',
+        },
       ],
     })
     .then((res) => {

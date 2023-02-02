@@ -6,6 +6,7 @@ import LandingBackground from '../components/LandingBackground';
 import LandingSkills from '../components/LandingSkills';
 import LandingExperiences from '../components/LandingExperiences';
 import LandingIntro from '../components/LandingIntro';
+import LandingSideSocialLinks from '../components/LandingSideSocialLinks';
 
 const containerStyle = css`
   background-color: inherit;
@@ -23,11 +24,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
+        <LandingSideSocialLinks />
         <div css={containerStyle}>
           <LandingIntro />
-          <LandingBackground />
-          <LandingSkills />
-          <LandingExperiences />
+          {/*<LandingBackground />*/}
+          {/*<LandingSkills />*/}
+          {/*<LandingExperiences />*/}
         </div>
       </Layout>
     </>

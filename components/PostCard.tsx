@@ -30,7 +30,6 @@ const contentStyle = css`
   gap: 10px;
 `;
 const linkStyle = css`
-  color: black;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

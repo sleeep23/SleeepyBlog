@@ -6,7 +6,7 @@ export interface DbPostContents {
 export interface PostThumbnailType {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   date: string;
   tags: Array<TagType>;
   imgLink: string | null;
@@ -20,7 +20,6 @@ export interface TagType {
   color: string;
 }
 
-export interface PostContentType {
+export interface PostContentType extends PostThumbnailType {
   content: string;
-  id: string;
 }

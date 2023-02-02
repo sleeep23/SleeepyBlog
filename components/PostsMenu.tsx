@@ -10,7 +10,7 @@ const sectionStyle = css`
   align-items: center;
   gap: 40px;
   button {
-    color: black;
+    color: white;
     &:hover {
       text-decoration: underline;
     }

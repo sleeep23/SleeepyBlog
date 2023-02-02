@@ -18,7 +18,7 @@ const secondary = '#3dffc5';
 const grayLight = '#b0bccc';
 const grayDark = '#606071';
 const grayAccentLight = '#b7b7c9';
-const grayAccentDark = '#494a5c';
+const grayAccentDark = '#f2f4f6';
 
 // Additional style colors
 const buttonDisabled = '#9e9eb6';
@@ -104,7 +104,7 @@ export function GlobalStyles() {
             content: '" "',
           },
           'html, body': {
-            backgroundColor: 'white',
+            backgroundColor: '#191f28',
             fontFamily: 'var(--font-primary)',
             color: 'var(--color-text)',
             WebkitTextSizeAdjust: '100%',

@@ -44,6 +44,7 @@
     "@types/marked": "^4.0.8",
     "@types/parse-numeric-range": "^0.0.1",
     "@types/react-syntax-highlighter": "^15.5.6",
+    "babel-plugin-inline-react-svg": "^2.0.1",
     "eslint-config-prettier": "^8.6.0",
     "prettier": "^2.8.1"
   }

@@ -10,13 +10,13 @@ export default function ArticleLayout({
 }) {
   const mainStyle = css`
     max-width: 768px;
-    margin: 0 auto;
+    margin: 0 auto 120px auto;
   `;
   return (
     <>
       <Header />
       <main css={mainStyle}>{children}</main>
-      <Footer />
+      {/*<Footer />*/}
     </>
   );
 }

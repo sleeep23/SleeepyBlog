@@ -13,9 +13,8 @@ const lottieStyle: React.CSSProperties = {
 const lottieContainer = css`
   width: fit-content;
   height: fit-content;
-  @media (max-width: 1000px) {
-    position: relative;
-    justify-content: center;
+  @media (max-width: 800px) {
+    display: none;
   }
 `;
 
@@ -24,10 +23,9 @@ export const layout = css`
   padding: 120px 0;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
   justify-content: flex-start;
   align-items: center;
-  gap: 40px;
   p:nth-of-type(3) {
     font-size: 22px;
   }
@@ -58,12 +56,17 @@ const landingStyle = css`
     font-size: 32px;
     font-weight: 700;
   }
-  & > p:nth-of-type(3) > span {
+  & > p:nth-of-type(3) > a {
+    color: inherit;
     padding: 2px 3px;
     border-bottom: 2px solid #3182f6;
     transition: 0.2s;
+    :visited {
+      color: unset;
+    }
     :hover {
       box-shadow: inset 0 -33px 0 0 #3182f6;
+      cursor: pointer;
     }
   }
   & > div {
@@ -108,7 +111,14 @@ function LandingIntro() {
           enhancing user experience and interface.
         </p>
         <p>
-          Contact 👉 <span>ehcws333@gm.gist.ac.kr</span>{' '}
+          Contact 👉{' '}
+          <a
+            href="mailto:ehcws333@gm.gist.ac.kr"
+            target="_blank"
+            rel="noreferrer"
+          >
+            ehcws333@gm.gist.ac.kr
+          </a>
         </p>
         <div>
           <Link href="/posts">Checkout my writings!</Link>
