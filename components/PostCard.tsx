@@ -45,7 +45,7 @@ const linkStyle = css`
     font-size: 24px;
   }
   &:visited {
-    color: unset;
+    color: inherit;
   }
   &:hover {
     & h1 {
