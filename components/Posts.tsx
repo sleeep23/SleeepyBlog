@@ -6,8 +6,11 @@ import { css } from '@emotion/react';
 const postCardsContainer = css`
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  margin: 40px auto;
   gap: 40px;
+  @media (max-width: 800px) {
+    margin: 40px;
+  }
 `;
 
 export default function Posts({

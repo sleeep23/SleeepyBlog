@@ -37,7 +37,7 @@ export function Markdown({ content }: { content: string }) {
       boxShadow: 'none',
       textShadow: 'none',
       '@media(max-width: 768px)': {
-        fontSize: 14,
+        fontSize: 12,
       },
     },
     pre: {
