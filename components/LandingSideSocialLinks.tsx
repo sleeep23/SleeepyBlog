@@ -1,6 +1,5 @@
 import React from 'react';
 import { css } from '@emotion/react';
-import Image from 'next/image';
 import Link from 'next/link';
 import Github from '../public/icons/github.svg';
 import Instagram from '../public/icons/instagram.svg';

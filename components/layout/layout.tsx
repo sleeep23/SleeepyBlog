@@ -10,8 +10,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div
         css={css`
           width: 100%;
+          height: calc(100% - 60px);
           padding: 0 150px;
-          background-color: #333d4b;
+          background-color: #191f28;
         `}
       >
         {children}

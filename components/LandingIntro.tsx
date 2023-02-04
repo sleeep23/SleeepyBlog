@@ -2,6 +2,7 @@ import React from 'react';
 import { css } from '@emotion/react';
 import Link from 'next/link';
 import Lottie from 'lottie-react';
+import Blob from '../public/lottie/blob.svg';
 // @ts-ignore
 import * as astronaut from '/public/lottie/astronaut.json';
 
@@ -10,9 +11,21 @@ const lottieStyle: React.CSSProperties = {
   height: 500,
 };
 
+const blobStyle = css`
+  position: absolute;
+`;
+
 const lottieContainer = css`
   width: fit-content;
   height: fit-content;
+  position: relative;
+  & > img {
+    position: absolute;
+    border-radius: 40px;
+    object-fit: cover;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+    opacity: 0.5;
+  }
   @media (max-width: 800px) {
     display: none;
   }
@@ -25,7 +38,8 @@ export const layout = css`
   flex-direction: row;
   flex-wrap: wrap-reverse;
   justify-content: flex-start;
-  align-items: center;
+  gap: 40px;
+  align-items: flex-end;
   p:nth-of-type(3) {
     font-size: 22px;
   }
@@ -101,6 +115,8 @@ const landingStyle = css`
 `;
 
 function LandingIntro() {
+  const space =
+    'https://static.vecteezy.com/system/resources/previews/007/120/314/large_2x/galaxy-background-with-falling-star-space-galaxy-illustration-free-vector.jpg';
   return (
     <section css={[layout]}>
       <div css={landingStyle}>
@@ -125,6 +141,7 @@ function LandingIntro() {
         </div>
       </div>
       <div css={lottieContainer}>
+        <Blob css={blobStyle} />
         <Lottie animationData={astronaut} style={lottieStyle} />
       </div>
     </section>
