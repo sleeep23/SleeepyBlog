@@ -4,23 +4,36 @@ import Posts from '../../components/Posts';
 import { PostsType } from '../../lib/type';
 import { server } from '../../config';
 import PostsMenu from '../../components/PostsMenu';
-
-async function getPosts(): Promise<PostsType> {
-  const posts = await fetch(`${server}/api/posts`);
-  return posts.json();
-}
+import { useQuery } from '@tanstack/react-query';
+import { fetchPosts } from '../../lib/fetchers';
 
 export default function Index() {
-  const [posts, setPosts] = useState<PostsType | undefined>(undefined);
   const [cntMenu, setCntMenu] = useState<string>('All');
+  const { isError, isSuccess, isLoading, data, error } = useQuery(
+    ['posts'],
+    fetchPosts,
+    { staleTime: 3000 }
+  );
+
+  if (isLoading) {
+    console.log('Loading posts ...');
+    return (
+      <ArticleLayout>
+        <div>Loading...</div>
+      </ArticleLayout>
+    );
+  }
+
+  if (isError) {
+    console.log('Error : ', error);
+    return (
+      <ArticleLayout>
+        <div>Error...</div>
+      </ArticleLayout>
+    );
+  }
+  const posts = data as PostsType;
   const menuItems = posts?.map((db) => db.name);
-  useEffect(() => {
-    const getFn = async () => {
-      const res = await getPosts();
-      setPosts(res);
-    };
-    getFn();
-  }, []);
   return (
     <ArticleLayout>
       <PostsMenu setCntMenu={setCntMenu} menuItems={menuItems} />

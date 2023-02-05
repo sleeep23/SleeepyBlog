@@ -8,6 +8,8 @@ import { useRouter } from 'next/router';
 import { server } from '../../config';
 
 import { Markdown } from '../../components/Markdown';
+import { useQuery } from '@tanstack/react-query';
+import { fetchSinglePost } from '../../lib/fetchers';
 
 const sectionStyle = css`
   display: flex;
@@ -41,33 +43,39 @@ const imgStyle = css`
   }
 `;
 
-export const getPost = async (id: string) => {
-  const res = await fetch(`${server}/api/posts/${id}`);
-  return res.json();
-};
-
 export default function SinglePost() {
-  const [post, setPost] = useState<PostContentType | undefined>(undefined);
   const router = useRouter();
-  const { id } = useMemo(() => {
-    return router.query;
-  }, [router.query]);
+  const postId = router.query.id as string;
+  const { isLoading, isSuccess, isError, data, error } = useQuery(
+    ['single-post', router.query.id],
+    () => fetchSinglePost(postId),
+    { staleTime: 3000 }
+  );
 
-  useEffect(() => {
-    const getFn = async () => {
-      if (id) {
-        const content = await getPost(id as string);
-        setPost(() => content);
-      }
-    };
-    getFn();
-  }, [id]);
+  if (isLoading) {
+    console.log(`Loading post ${postId}...`);
+    return (
+      <ArticleLayout>
+        <div>Loading...</div>
+      </ArticleLayout>
+    );
+  }
+
+  if (isError) {
+    console.log('Error : ', error);
+    return (
+      <ArticleLayout>
+        <div>Error...</div>
+      </ArticleLayout>
+    );
+  }
+  const post = data as PostContentType;
 
   return (
     <ArticleLayout>
       <section css={sectionStyle}>
-        <h1>{post?.title}</h1>
-        <p>{post?.date}</p>
+        <h1>{post && post.title}</h1>
+        <p>{post && post.date}</p>
         {post && (
           <Image
             css={imgStyle}
