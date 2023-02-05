@@ -18,12 +18,27 @@ const sectionStyle = css`
   margin-top: 40px;
   & > h1 {
     font-size: 48px;
+    text-align: center;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    @media (max-width: 768px) {
+      font-size: 32px;
+    }
+  }
+  & > p {
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
   }
 `;
 
 const imgStyle = css`
   border-radius: 20px;
   margin-bottom: 40px;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const getPost = async (id: string) => {
@@ -59,7 +74,7 @@ export default function SinglePost() {
             src={post.imgLink as string}
             alt={post.title}
             width={700}
-            height={350}
+            height={430}
           />
         )}
         {post && <Markdown content={post.content} />}

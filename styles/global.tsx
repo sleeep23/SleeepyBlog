@@ -95,7 +95,7 @@ export function GlobalStyles() {
               display: 'block',
             },
           'nav ul': {
-            listStyle: 'none',
+            // listStyle: 'none',
           },
           'blockquote, q': {
             quotes: 'none',
@@ -104,7 +104,7 @@ export function GlobalStyles() {
             content: '" "',
           },
           'html, body': {
-            backgroundColor: '#191f28',
+            backgroundColor: '#1f2028',
             fontFamily: 'var(--font-primary)',
             color: 'var(--color-text)',
             WebkitTextSizeAdjust: '100%',
@@ -139,9 +139,9 @@ export function GlobalStyles() {
             margin: 0,
             padding: 0,
             lineHeight: '1.8rem',
+            display: 'inline-block',
           },
           'ul, li': {
-            listStyle: 'none',
             margin: 0,
             padding: 0,
           },
@@ -156,96 +156,6 @@ export function GlobalStyles() {
             fontWeight: 'inherit',
             color: 'var(--color-primary)',
             cursor: 'pointer',
-          },
-          '@keyframes slideUpSection': {
-            '0%': {
-              transform: 'translate3d(0, 100%, 0)',
-            },
-            '100%': {
-              transform: 'translate3d(0, 0, 0)',
-            },
-          },
-          '@keyframes slideDownSection': {
-            '0%': {
-              transform: 'translate3d(0, 0, 0)',
-            },
-            '100%': {
-              transform: 'translate3d(0, 100%, 0)',
-            },
-          },
-          '@keyframes slideUp': {
-            '0%': {
-              opacity: 0,
-              transform: 'translate3d(0, 100%, 0)',
-            },
-            '100%': {
-              transform: 'translate3d(0, 0, 0)',
-              opacity: 1,
-            },
-          },
-          '@keyframes slideDown': {
-            '0%': {
-              opacity: 0,
-              transform: 'translate3d(0, -100%, 0)',
-            },
-            '100%': {
-              transform: 'translate3d(0, 0, 0)',
-              opacity: 1,
-            },
-          },
-          '@keyframes tooltipUp': {
-            '0%': {
-              opacity: 0,
-              transform: 'translate3d(0, 100%, 0)',
-            },
-            '10%': {
-              transform: 'translate3d(0, 0, 0)',
-              opacity: 1,
-            },
-            '90%': {
-              transform: 'translate3d(0, 0, 0)',
-              opacity: 1,
-            },
-            '100%': {
-              transform: 'translate3d(0, 100%, 0)',
-              opacity: 0,
-            },
-          },
-          '@keyframes tooltipDown': {
-            '0%': {
-              opacity: 0,
-              transform: 'translate3d(0, -100%, 0)',
-            },
-            '10%': {
-              transform: 'translate3d(0, 0, 0)',
-              opacity: 1,
-            },
-            '90%': {
-              transform: 'translate3d(0, 0, 0)',
-              opacity: 1,
-            },
-            '100%': {
-              transform: 'translate3d(0, -100%, 0)',
-              opacity: 0,
-            },
-          },
-          '@keyframes dash': {
-            '0%': {
-              strokeDasharray: '1, 150',
-              strokeDashoffset: '0',
-            },
-            '50%': {
-              strokeDasharray: '90, 150',
-              strokeDashoffset: '-35',
-            },
-            '100%': {
-              strokeDasharray: '90, 150',
-              strokeDashoffset: '-124',
-            },
-          },
-          '@keyframes spin': {
-            from: { transform: 'rotate(0deg)' },
-            to: { transform: 'rotate(180deg)' },
           },
         }}
       />

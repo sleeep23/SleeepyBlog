@@ -8,14 +8,17 @@ export default function ArticleLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const mainStyle = css`
-    max-width: 768px;
+  const contentStyle = css`
+    max-width: 700px;
     margin: 0 auto 120px auto;
+    @media (max-width: 768px) {
+      padding: 0 16px 120px 16px;
+    }
   `;
   return (
     <>
       <Header />
-      <main css={mainStyle}>{children}</main>
+      <div css={contentStyle}>{children}</div>
       {/*<Footer />*/}
     </>
   );

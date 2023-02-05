@@ -1,13 +1,12 @@
 // /** @jsxImportSource @emotion/react */
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import Link from 'next/link';
 
-const Container = styled.div`
+const Container = css`
   width: 100%;
   height: 60px;
   padding: 0 20px;
-  background: #191f28;
+  background: inherit;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -16,7 +15,7 @@ const Container = styled.div`
   border-bottom: 1px solid rgba(0, 27, 55, 0.1);
 `;
 
-const LinkContainer = styled.ul`
+const LinkContainer = css`
   width: 900px;
   display: flex;
   flex-direction: row;
@@ -26,43 +25,41 @@ const LinkContainer = styled.ul`
   }
 `;
 
+const logo = css`
+  color: white;
+  :visited {
+    color: white;
+  }
+`;
+
+const link = css`
+  color: white;
+  padding: 11px 16px;
+  border-radius: 6px;
+  :visited {
+    color: white;
+  }
+  :hover {
+    transition: 0.15s;
+    background-color: #333d4b;
+  }
+`;
+
 export default function Header() {
   return (
-    <Container>
+    <div css={Container}>
       <h2>
-        <Link
-          href="/"
-          css={css`
-            color: white;
-            :visited {
-              color: white;
-            }
-          `}
-        >
+        <Link href="/" css={logo}>
           Sleep23&apos;s Space
         </Link>
       </h2>
-      <LinkContainer>
+      <div css={LinkContainer}>
         <li>
-          <Link
-            href="/posts"
-            css={css`
-              color: white;
-              padding: 11px 16px;
-              border-radius: 6px;
-              :visited {
-                color: white;
-              }
-              :hover {
-                transition: 0.15s;
-                background-color: #333d4b;
-              }
-            `}
-          >
+          <Link href="/posts" css={link}>
             Writings
           </Link>
         </li>
-      </LinkContainer>
-    </Container>
+      </div>
+    </div>
   );
 }
