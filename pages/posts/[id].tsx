@@ -17,7 +17,7 @@ const sectionStyle = css`
   justify-content: center;
   align-items: center;
   gap: 40px;
-  margin-top: 40px;
+  margin-top: 80px;
   & > h1 {
     font-size: 48px;
     text-align: center;
@@ -30,6 +30,7 @@ const sectionStyle = css`
   & > p {
     @media (max-width: 768px) {
       font-size: 12px;
+      color: #f2f4f6;
     }
   }
 `;

@@ -2363,6 +2363,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"github-markdown-css@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "github-markdown-css@npm:5.1.0"
+  checksum: e3472770dedc9508d30a788bc522beb0c993f08b1f098389619174414c3ce558727d8b3d0c6eed50d156ee0cf04ab667e4bca5149dedc7869b54bd38db0cc5fb
+  languageName: node
+  linkType: hard
+
 "glob-parent@npm:^5.1.2":
   version: 5.1.2
   resolution: "glob-parent@npm:5.1.2"
@@ -3885,6 +3892,7 @@ __metadata:
     eslint: 8.31.0
     eslint-config-next: 13.1.1
     eslint-config-prettier: ^8.6.0
+    github-markdown-css: ^5.1.0
     lottie-react: ^2.3.1
     marked: ^4.2.12
     next: 13.1.1

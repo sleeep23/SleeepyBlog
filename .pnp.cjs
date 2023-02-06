@@ -52,6 +52,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.31.0"],\
             ["eslint-config-next", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:13.1.1"],\
             ["eslint-config-prettier", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:8.6.0"],\
+            ["github-markdown-css", "npm:5.1.0"],\
             ["lottie-react", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:2.3.1"],\
             ["marked", "npm:4.2.12"],\
             ["next", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:13.1.1"],\
@@ -3160,6 +3161,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["github-markdown-css", [\
+        ["npm:5.1.0", {\
+          "packageLocation": "./.yarn/cache/github-markdown-css-npm-5.1.0-d2b2b6d421-e3472770de.zip/node_modules/github-markdown-css/",\
+          "packageDependencies": [\
+            ["github-markdown-css", "npm:5.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["glob", [\
         ["npm:7.1.7", {\
           "packageLocation": "./.yarn/cache/glob-npm-7.1.7-5698ad9c48-b61f48973b.zip/node_modules/glob/",\
@@ -4917,6 +4927,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.31.0"],\
             ["eslint-config-next", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:13.1.1"],\
             ["eslint-config-prettier", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:8.6.0"],\
+            ["github-markdown-css", "npm:5.1.0"],\
             ["lottie-react", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:2.3.1"],\
             ["marked", "npm:4.2.12"],\
             ["next", "virtual:d2b68a452f0658bd7e056d8119ae784414b35bf6ca040e716c620b7a12c8fa565d59c32441e75afa421aedb34d75bbe5d43aa2014a41bd2aaa7d00c1af4fe78c#npm:13.1.1"],\
