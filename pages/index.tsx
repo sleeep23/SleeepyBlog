@@ -8,12 +8,6 @@ import Layout from '../components/layout/layout';
 import LandingIntro from '../components/LandingIntro';
 import LandingSideSocialLinks from '../components/LandingSideSocialLinks';
 
-const containerStyle = css`
-  background-color: inherit;
-  display: flex;
-  flex-direction: column;
-`;
-
 export default function Home() {
   return (
     <>
@@ -25,9 +19,7 @@ export default function Home() {
       </Head>
       <Layout>
         <LandingSideSocialLinks />
-        <div css={containerStyle}>
-          <LandingIntro />
-        </div>
+        <LandingIntro />
       </Layout>
     </>
   );

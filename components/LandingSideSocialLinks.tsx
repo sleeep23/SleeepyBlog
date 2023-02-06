@@ -21,6 +21,9 @@ const sideStyle = css`
     border-left: 2px solid white;
     height: 160px;
   }
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const iconStyle = css`

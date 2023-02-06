@@ -7,17 +7,22 @@ import Blob from '../public/lottie/blob.svg';
 import * as astronaut from '/public/lottie/astronaut.json';
 
 const lottieStyle: React.CSSProperties = {
-  width: 500,
-  height: 500,
+  width: '100%',
+  height: '100%',
 };
 
 const blobStyle = css`
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: auto;
 `;
 
 const lottieContainer = css`
-  width: fit-content;
-  height: fit-content;
+  width: 500px;
+  height: 500px;
   position: relative;
   & > img {
     position: absolute;
@@ -26,8 +31,9 @@ const lottieContainer = css`
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
     opacity: 0.5;
   }
-  @media (max-width: 800px) {
-    display: none;
+  @media (max-width: 1200px) {
+    width: 300px;
+    height: 300px;
   }
 `;
 
@@ -36,12 +42,20 @@ export const layout = css`
   padding: 120px 0;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap-reverse;
-  justify-content: flex-start;
+  justify-content: space-around;
   gap: 40px;
-  align-items: flex-end;
+  align-items: flex-start;
   p:nth-of-type(3) {
     font-size: 22px;
+  }
+  @media (max-width: 1439px) {
+    justify-content: flex-start;
+    gap: 0;
+  }
+  @media (max-width: 1200px) {
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    padding: 0 0 120px 0;
   }
 `;
 
@@ -115,10 +129,8 @@ const landingStyle = css`
 `;
 
 function LandingIntro() {
-  const space =
-    'https://static.vecteezy.com/system/resources/previews/007/120/314/large_2x/galaxy-background-with-falling-star-space-galaxy-illustration-free-vector.jpg';
   return (
-    <section css={[layout]}>
+    <section css={layout}>
       <div css={landingStyle}>
         <p>Hi, there? 👋</p>
         <p>

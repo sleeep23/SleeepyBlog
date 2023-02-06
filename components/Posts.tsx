@@ -9,7 +9,8 @@ const postCardsContainer = css`
   margin: 40px auto;
   gap: 40px;
   @media (max-width: 768px) {
-    margin: 0px;
+    margin: 80px 0;
+    gap: 120px;
   }
 `;
 
