@@ -37,7 +37,7 @@
         --color-canvas-default: #0d1117;
         --color-canvas-subtle: #161b22;
         --color-border-default: #30363d;
-        --color-border-muted: #21262d;
+        --color-border-muted: #333d4b;
         --color-neutral-muted: rgba(110,118,129,0.4);
         --color-accent-fg: #58a6ff;
         --color-accent-emphasis: #1f6feb;
@@ -397,6 +397,8 @@
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 2em;
+    display: flex;
+    flex-direction: column;
 }
 
 .markdown-body ol ol,
@@ -726,6 +728,15 @@
 .markdown-body ol ul {
     margin-top: 0;
     margin-bottom: 0;
+}
+
+.markdown-body p {
+    display: inline;
+}
+
+.markdown-body li {
+    margin: 4px 0;
+    padding: 2px;
 }
 
 .markdown-body li>p {

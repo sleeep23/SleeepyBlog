@@ -2,9 +2,9 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Layout from '../components/layout/layout';
-import LandingBackground from '../components/LandingBackground';
-import LandingSkills from '../components/LandingSkills';
-import LandingExperiences from '../components/LandingExperiences';
+// import LandingBackground from '../components/LandingBackground';
+// import LandingSkills from '../components/LandingSkills';
+// import LandingExperiences from '../components/LandingExperiences';
 import LandingIntro from '../components/LandingIntro';
 import LandingSideSocialLinks from '../components/LandingSideSocialLinks';
 
@@ -27,9 +27,6 @@ export default function Home() {
         <LandingSideSocialLinks />
         <div css={containerStyle}>
           <LandingIntro />
-          {/*<LandingBackground />*/}
-          {/*<LandingSkills />*/}
-          {/*<LandingExperiences />*/}
         </div>
       </Layout>
     </>

@@ -29,7 +29,6 @@ export default function Posts({
     });
     return result;
   };
-  console.log(defaultPost());
   const cntPost =
     data &&
     data

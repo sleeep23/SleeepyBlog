@@ -27,6 +27,10 @@ const styleMarkdown = css`
   color: #a9adc1;
   word-break: keep-all;
   overflow-wrap: break-word;
+  h1,
+  h2 {
+    color: #f2f4f6;
+  }
   .codeStyle,
   pre,
   code,

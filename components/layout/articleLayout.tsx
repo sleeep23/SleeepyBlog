@@ -9,7 +9,7 @@ export default function ArticleLayout({
   children: React.ReactNode;
 }) {
   const contentStyle = css`
-    max-width: 700px;
+    max-width: 768px;
     margin: 0 auto 120px auto;
     @media (max-width: 768px) {
       padding: 0 16px 120px 16px;

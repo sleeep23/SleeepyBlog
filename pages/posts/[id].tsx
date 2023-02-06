@@ -36,6 +36,7 @@ const sectionStyle = css`
 `;
 
 const imgStyle = css`
+  width: 100%;
   border-radius: 20px;
   margin-bottom: 40px;
   @media (max-width: 768px) {
