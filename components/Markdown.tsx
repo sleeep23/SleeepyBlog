@@ -28,7 +28,8 @@ const styleMarkdown = css`
   word-break: keep-all;
   overflow-wrap: break-word;
   h1,
-  h2 {
+  h2,
+  h3 {
     color: #f2f4f6;
   }
   .codeStyle,

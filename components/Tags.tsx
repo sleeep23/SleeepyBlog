@@ -4,15 +4,19 @@ import { TagType } from '../lib/type';
 import { css } from '@emotion/react';
 import { changeColor } from '../lib/color';
 
-const TagContainer = styled.div`
+const tagContainer = css`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 0.5em;
+  p {
+    margin: 0;
+  }
 `;
 
 function Tags({ tags }: { tags: Array<TagType> }) {
   return (
-    <TagContainer>
+    <div css={tagContainer}>
       {tags.map((tag: TagType) => {
         return (
           <p
@@ -34,7 +38,7 @@ function Tags({ tags }: { tags: Array<TagType> }) {
           </p>
         );
       })}
-    </TagContainer>
+    </div>
   );
 }
 

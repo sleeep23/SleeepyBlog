@@ -8,8 +8,8 @@ const postCardsContainer = css`
   flex-direction: column;
   margin: 40px auto;
   gap: 40px;
-  @media (max-width: 800px) {
-    margin: 40px;
+  @media (max-width: 768px) {
+    margin: 0px;
   }
 `;
 

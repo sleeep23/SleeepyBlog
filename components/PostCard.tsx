@@ -14,21 +14,43 @@ const tagAndDateStyle = css`
   p {
     font-size: 10px;
   }
+  @media (max-width: 768px) {
+    gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    p {
+      margin: 0;
+    }
+  }
 `;
 
 const imgStyle = css`
   border-radius: 16px;
   object-fit: cover;
   object-position: center;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 const contentStyle = css`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: block;
   width: 528px;
   height: 100%;
   padding: 20px;
   gap: 10px;
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0;
+  }
+  h1,
+  p {
+    display: block;
+    margin-bottom: 10px;
+    word-break: keep-all;
+    text-decoration-thickness: auto;
+  }
+  h1 {
+    font-size: 24px;
 `;
 const linkStyle = css`
   display: flex;
@@ -38,14 +60,7 @@ const linkStyle = css`
   gap: 40px;
   width: 100%;
   color: #f2f4f6;
-  h2 p section {
-    display: block;
-    margin: 4px;
-    line-height: 1.8rem;
-  }
-  h1 {
-    font-size: 24px;
-  }
+
   &:visited {
     color: #f2f4f6;
   }
@@ -58,6 +73,10 @@ const linkStyle = css`
       box-shadow: 0 8px 16px -12px #4e5968;
       transition: 0.3s ease-in-out;
     }
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
   }
 `;
 
