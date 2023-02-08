@@ -1,9 +1,9 @@
 import React, { use, useEffect, useState } from 'react';
+import { PostsType } from '../../lib/type';
 import ArticleLayout from '../../components/layout/articleLayout';
 import Posts from '../../components/Posts';
-import { PostsType } from '../../lib/type';
-import { server } from '../../config';
 import PostsMenu from '../../components/PostsMenu';
+
 import { useQuery } from '@tanstack/react-query';
 import { fetchPosts } from '../../lib/fetchers';
 
@@ -34,10 +34,12 @@ export default function Index() {
   }
   const posts = data as PostsType;
   const menuItems = posts?.map((db) => db.name);
-  return (
-    <ArticleLayout>
-      <PostsMenu setCntMenu={setCntMenu} menuItems={menuItems} />
-      {posts && <Posts cntMenu={cntMenu} data={posts} />}
-    </ArticleLayout>
-  );
+  if (isSuccess) {
+    return (
+      <ArticleLayout>
+        <PostsMenu setCntMenu={setCntMenu} menuItems={menuItems} />
+        {posts && <Posts cntMenu={cntMenu} data={posts} />}
+      </ArticleLayout>
+    );
+  }
 }

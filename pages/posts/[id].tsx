@@ -1,11 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React from 'react';
 import ArticleLayout from '../../components/layout/articleLayout';
 import { css } from '@emotion/react';
 import Image from 'next/image';
 
 import { PostContentType } from '../../lib/type';
 import { useRouter } from 'next/router';
-import { server } from '../../config';
 
 import { Markdown } from '../../components/Markdown';
 import { useQuery } from '@tanstack/react-query';
@@ -73,22 +72,24 @@ export default function SinglePost() {
   }
   const post = data as PostContentType;
 
-  return (
-    <ArticleLayout>
-      <section css={sectionStyle}>
-        <h1>{post && post.title}</h1>
-        <p>{post && post.date}</p>
-        {post && (
-          <Image
-            css={imgStyle}
-            src={post.imgLink as string}
-            alt={post.title}
-            width={700}
-            height={430}
-          />
-        )}
-        {post && <Markdown content={post.content} />}
-      </section>
-    </ArticleLayout>
-  );
+  if (isSuccess) {
+    return (
+      <ArticleLayout>
+        <section css={sectionStyle}>
+          <h1>{post && post.title}</h1>
+          <p>{post && post.date}</p>
+          {post && (
+            <Image
+              css={imgStyle}
+              src={post.imgLink as string}
+              alt={post.title}
+              width={700}
+              height={430}
+            />
+          )}
+          {post && <Markdown content={post.content} />}
+        </section>
+      </ArticleLayout>
+    );
+  }
 }

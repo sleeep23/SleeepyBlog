@@ -7,33 +7,10 @@ import {
   PartialPageObjectResponse,
 } from '@notionhq/client/build/src/api-endpoints';
 import { DbPostContents } from '../../../lib/type';
-
-export async function getDatabasePostIds(dbId: string) {
-  const arr: Array<PageObjectResponse | PartialPageObjectResponse> = [];
-  await notion.databases
-    .query({
-      database_id: dbId,
-      sorts: [
-        {
-          property: 'Date',
-          direction: 'descending',
-          timestamp: 'created_time',
-        },
-      ],
-    })
-    .then((res) => {
-      res.results.map(
-        (result: PageObjectResponse | PartialPageObjectResponse) => {
-          arr.push(result);
-        }
-      );
-    });
-  return arr;
-}
+import { getDatabasePostIds } from '../../../lib/fetchers';
 
 const refinedPost = (data: PageObjectResponse | PartialPageObjectResponse) => {
   const page = data as PageObjectResponse;
-
   const id = page.id;
   // @ts-ignore
   const title = page.properties.Title.title[0].plain_text as string;
@@ -62,7 +39,6 @@ export default async function handler(
     database_ids.map(async (id: string, index: number) => {
       const contents = await getDatabasePostIds(id);
       const dbName = databases[index];
-
       const posts = contents.map((content) => {
         return refinedPost(content);
       });

@@ -1,46 +1,34 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { NotionToMarkdown } from 'notion-to-md';
-import notion from '../../../lib/notion';
 import { PostContentType } from '../../../lib/type';
-
-const n2m = new NotionToMarkdown({ notionClient: notion });
-
-const getPostImage = async (postId: string) => {
-  const page = await notion.pages.retrieve({ page_id: postId });
-  // @ts-ignore
-  return page.cover.external.url as string;
-};
-const getPostTitle = async (postId: string) => {
-  const page = await notion.pages.retrieve({ page_id: postId });
-  // @ts-ignore
-  return page.properties.Title.title[0].plain_text;
-};
-const getPostDate = async (postId: string) => {
-  const page = await notion.pages.retrieve({ page_id: postId });
-  // @ts-ignore
-  return page.properties.Date.date.start;
-};
-const getPostTags = async (postId: string) => {
-  const page = await notion.pages.retrieve({ page_id: postId });
-  // @ts-ignore
-  return page.properties.Date.date.start;
-};
-const getPostContent = async (postId: string) => {
-  const mdBlocks = await n2m.pageToMarkdown(postId);
-  return n2m.toMarkdownString(mdBlocks);
-};
+import {
+  getPostContent,
+  getPostDate,
+  getPostImage,
+  getPostTags,
+  getPostTitle,
+} from '../../../lib/fetchers';
 
 export default async function postIdHandler(
   req: NextApiRequest,
   res: NextApiResponse<PostContentType>
 ) {
   const { postId } = await req.query;
-  const postContent = await getPostContent(postId as string);
-  const postTitle = await getPostTitle(postId as string);
-  const postDate = await getPostDate(postId as string);
-  const postImage = await getPostImage(postId as string);
-  const postTags = await getPostTags(postId as string);
+  const [postContent, postTitle, postDate, postImage, postTags] =
+    await Promise.all([
+      getPostContent(postId as string),
+      getPostTitle(postId as string),
+      getPostDate(postId as string),
+      getPostImage(postId as string),
+      getPostTags(postId as string),
+    ]);
+  const post = {
+    postId,
+    postTitle,
+    postDate,
+    postImage,
+    postTags,
+    postContent,
+  };
   res.status(200).send({
     imgLink: postImage,
     content: postContent,

@@ -79,22 +79,38 @@ const landingStyle = css`
     white-space: pre-wrap;
     overflow-wrap: break-word;
     word-break: keep-all;
+    @media (max-width: 768px) {
+      font-size: 20px;
+      line-height: 1.7;
+      padding: 10px 0;
+    }
   }
   & > p:nth-of-type(2) > span {
     font-size: 32px;
     font-weight: 700;
-  }
-  & > p:nth-of-type(3) > a {
-    color: inherit;
-    padding: 2px 3px;
-    border-bottom: 2px solid #3182f6;
-    transition: 0.2s;
-    :visited {
-      color: unset;
+    @media (max-width: 768px) {
+      font-size: 24px;
+      line-height: 1.7;
+      font-weight: 600;
     }
-    :hover {
-      box-shadow: inset 0 -33px 0 0 #3182f6;
-      cursor: pointer;
+  }
+  & > p:nth-of-type(3) {
+    font-size: inherit;
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+    & > a {
+      color: inherit;
+      padding: 2px 3px;
+      border-bottom: 2px solid #3182f6;
+      transition: 0.2s;
+      :visited {
+        color: unset;
+      }
+      :hover {
+        box-shadow: inset 0 -33px 0 0 #3182f6;
+        cursor: pointer;
+      }
     }
   }
   & > div {
@@ -104,7 +120,7 @@ const landingStyle = css`
     p {
       font-size: 24px;
       font-weight: 300;
-      color: #444452;
+      //color: #444452;
     }
     a {
       width: fit-content;

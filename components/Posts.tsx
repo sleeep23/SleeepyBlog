@@ -40,9 +40,9 @@ export default function Posts({
   return (
     <div css={postCardsContainer}>
       {cntMenu === 'All' ? (
-        <PostCard cntPost={defaultPost()} />
+        <PostCard cntMenu={cntMenu} cntPost={defaultPost()} />
       ) : (
-        <PostCard cntPost={cntPost?.posts} />
+        <PostCard cntMenu={cntMenu} cntPost={cntPost?.posts} />
       )}
     </div>
   );

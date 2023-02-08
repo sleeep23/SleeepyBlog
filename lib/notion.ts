@@ -4,11 +4,14 @@ import {
   BlockObjectResponse,
   ListBlockChildrenResponse,
 } from '@notionhq/client/build/src/api-endpoints';
+import { NotionToMarkdown } from 'notion-to-md';
 
 const notion = new Client({
   auth: NOTION_TOKEN,
 });
 export default notion;
+
+export const n2m = new NotionToMarkdown({ notionClient: notion });
 
 // 아직 쓸일 없음
 export const getDatabase = async (databaseId: string) => {

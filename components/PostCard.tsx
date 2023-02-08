@@ -13,6 +13,7 @@ const tagAndDateStyle = css`
   gap: 20px;
   p {
     font-size: 10px;
+    margin: 0;
   }
   @media (max-width: 768px) {
     gap: 10px;
@@ -80,14 +81,35 @@ const linkStyle = css`
   }
 `;
 
-function PostCard({ cntPost }: { cntPost: PostThumbnailType[] | undefined }) {
+const heading = css`
+  font-size: 40px;
+  margin-bottom: 20px;
+`;
+
+const postNotExisting = css`
+  width: 100%;
+  height: auto;
+  padding: 40px;
+  text-align: center;
+  font-size: 28px;
+  opacity: 0.5;
+`;
+
+function PostCard({
+  cntPost,
+  cntMenu,
+}: {
+  cntPost: PostThumbnailType[] | undefined;
+  cntMenu: string;
+}) {
   const to = (id: string) => {
     return `/posts/${id}`;
   };
-  console.log(cntPost);
   return (
     <>
+      <h1 css={heading}>{cntMenu}</h1>
       {cntPost &&
+        cntPost.length >= 1 &&
         cntPost.map((post) => {
           return (
             <Link key={post.id} href={to(post.id)} css={linkStyle}>
@@ -111,6 +133,9 @@ function PostCard({ cntPost }: { cntPost: PostThumbnailType[] | undefined }) {
             </Link>
           );
         })}
+      {cntPost && cntPost.length < 1 && (
+        <div css={postNotExisting}>No Posts yet!</div>
+      )}
     </>
   );
 }
