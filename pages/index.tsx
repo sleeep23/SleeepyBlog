@@ -1,10 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
 import Head from 'next/head';
 import Layout from '../components/layout/layout';
-// import LandingBackground from '../components/LandingBackground';
-// import LandingSkills from '../components/LandingSkills';
-// import LandingExperiences from '../components/LandingExperiences';
 import LandingIntro from '../components/LandingIntro';
 import LandingSideSocialLinks from '../components/LandingSideSocialLinks';
 
