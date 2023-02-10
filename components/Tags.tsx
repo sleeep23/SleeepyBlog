@@ -14,10 +14,10 @@ const tagContainer = css`
   }
 `;
 
-function Tags({ tags }: { tags: Array<TagType> }) {
+function Tags({ tags }: { tags: Array<string> }) {
   return (
     <div css={tagContainer}>
-      {tags.map((tag: TagType) => {
+      {tags.map((tag: string, index) => {
         return (
           <p
             css={css`
@@ -26,15 +26,15 @@ function Tags({ tags }: { tags: Array<TagType> }) {
               line-height: 1.4;
               padding: 2px 6px;
               border-radius: 4px;
-              background-color: ${changeColor(tag.color)};
+              background-color: #161b22;
               font-size: 8px;
               display: block;
               justify-content: center;
               align-items: center;
             `}
-            key={tag.id}
+            key={index}
           >
-            {tag.name}
+            {tag}
           </p>
         );
       })}

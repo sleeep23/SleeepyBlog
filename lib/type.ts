@@ -8,8 +8,9 @@ export interface PostThumbnailType {
   title: string;
   description?: string;
   date: string;
-  tags: Array<TagType>;
+  tags: Array<string>;
   imgLink: string | null;
+  published: boolean;
 }
 
 export interface PostsType extends Array<DbPostContents> {}

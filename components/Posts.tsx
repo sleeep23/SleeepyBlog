@@ -15,35 +15,15 @@ const postCardsContainer = css`
 `;
 
 export default function Posts({
-  data,
+  posts,
   cntMenu,
 }: {
-  data: PostsType;
+  posts: PostThumbnailType[];
   cntMenu: string;
 }) {
-  const defaultPost = () => {
-    let result: PostThumbnailType[] = [];
-    data.map((item) => {
-      item.posts.map((post) => {
-        result.push(post);
-      });
-    });
-    return result;
-  };
-  const cntPost =
-    data &&
-    data
-      .filter((item) => {
-        return item.name === cntMenu;
-      })
-      .at(0);
   return (
     <div css={postCardsContainer}>
-      {cntMenu === 'All' ? (
-        <PostCard cntMenu={cntMenu} cntPost={defaultPost()} />
-      ) : (
-        <PostCard cntMenu={cntMenu} cntPost={cntPost?.posts} />
-      )}
+      <PostCard cntMenu={cntMenu} posts={posts} />
     </div>
   );
 }

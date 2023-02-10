@@ -96,10 +96,10 @@ const postNotExisting = css`
 `;
 
 function PostCard({
-  cntPost,
+  posts,
   cntMenu,
 }: {
-  cntPost: PostThumbnailType[] | undefined;
+  posts: PostThumbnailType[] | undefined;
   cntMenu: string;
 }) {
   const to = (id: string) => {
@@ -108,34 +108,34 @@ function PostCard({
   return (
     <>
       <h1 css={heading}>{cntMenu}</h1>
-      {cntPost &&
-        cntPost.length >= 1 &&
-        cntPost.map((post) => {
-          return (
-            <Link key={post.id} href={to(post.id)} css={linkStyle}>
-              {post.imgLink && (
-                <Image
-                  src={post.imgLink}
-                  alt={post.title}
-                  width={200}
-                  height={200}
-                  css={imgStyle}
-                />
-              )}
-              <section css={contentStyle}>
-                <h1>{post.title}</h1>
-                <p>{post.description}</p>
-                <section css={tagAndDateStyle}>
-                  <p>{post.date}</p>
-                  <Tags tags={post.tags} />
+      {posts &&
+        posts.map((post) => {
+          if (post.published) {
+            return (
+              <Link key={post.id} href={to(post.id)} css={linkStyle}>
+                {post.imgLink && (
+                  <Image
+                    src={post.imgLink}
+                    alt={post.title}
+                    width={200}
+                    height={200}
+                    css={imgStyle}
+                  />
+                )}
+                <section css={contentStyle}>
+                  <h1>{post.title}</h1>
+                  <p>{post.description}</p>
+                  <section css={tagAndDateStyle}>
+                    <p>{post.date}</p>
+                    <Tags tags={post.tags} />
+                  </section>
                 </section>
-              </section>
-            </Link>
-          );
+              </Link>
+            );
+          }
         })}
-      {cntPost && cntPost.length < 1 && (
-        <div css={postNotExisting}>No Posts yet!</div>
-      )}
+
+      {/*{!cntPost && <div css={postNotExisting}>No Posts yet!</div>}*/}
     </>
   );
 }
