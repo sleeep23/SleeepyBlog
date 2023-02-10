@@ -90,7 +90,7 @@ export default function Index() {
     return (
       <ArticleLayout>
         <PostsMenu setCntMenu={setCntMenu} menuItems={dbNames} />
-        <Posts cntMenu={cntMenu} posts={posts} />
+        {posts && <Posts cntMenu={cntMenu} posts={posts} />}
       </ArticleLayout>
     );
   }

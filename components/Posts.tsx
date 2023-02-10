@@ -23,7 +23,7 @@ export default function Posts({
 }) {
   return (
     <div css={postCardsContainer}>
-      <PostCard cntMenu={cntMenu} posts={posts} />
+      {posts && <PostCard cntMenu={cntMenu} posts={posts} />}
     </div>
   );
 }

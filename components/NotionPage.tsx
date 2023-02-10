@@ -9,16 +9,6 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { css } from '@emotion/react';
 
-export const imgStyle = css`
-  width: 100%;
-  border-radius: 20px;
-  margin: 40px 0;
-  @media (max-width: 768px) {
-    width: 100%;
-    height: auto;
-  }
-`;
-
 const Code = dynamic(() =>
   import('react-notion-x/build/third-party/code').then(async (m) => {
     await Promise.all([

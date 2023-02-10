@@ -1,11 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import notion from '../../../lib/notion';
-import { getDateValue, getPageTitle } from 'notion-utils';
-import { ExtendedRecordMap } from 'notion-types';
-
-const getPageTags = (recordMap: ExtendedRecordMap) => {
-  // const tags = recordMap.
-};
+import { getPageTitle } from 'notion-utils';
 
 export default async function postIdHandler(
   req: NextApiRequest,
@@ -36,9 +31,7 @@ export default async function postIdHandler(
   const imgLink =
     recordMap.block[thumbnailId as string].value.format.page_cover;
   const published =
-    recordMap.block[thumbnailId as string].value.properties['k<e;']
-      .at(0)
-      .at(0) === 'Yes';
+    !!recordMap.block[thumbnailId as string].value.properties['k<e;'];
   res.send({
     id,
     title,

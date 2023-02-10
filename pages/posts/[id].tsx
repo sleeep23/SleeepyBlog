@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import notion from '../../lib/notion';
 import { ExtendedRecordMap } from 'notion-types';
-import { imgStyle, NotionPage } from '../../components/NotionPage';
+import { NotionPage } from '../../components/NotionPage';
 import { getPageTitle } from 'notion-utils';
 
 const sectionStyle = css`
@@ -13,7 +13,7 @@ const sectionStyle = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 60px;
+  gap: 40px;
   margin-top: 80px;
   & > h1 {
     font-size: 48px;
@@ -29,6 +29,16 @@ const sectionStyle = css`
       font-size: 12px;
       color: #f2f4f6;
     }
+  }
+`;
+
+export const imgStyle = css`
+  width: 100%;
+  border-radius: 20px;
+  margin: 40px 0 0 0;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
   }
 `;
 
@@ -76,7 +86,7 @@ export default function SinglePost({
           <Image
             css={imgStyle}
             src={src}
-            alt={'title'}
+            alt={title}
             width={700}
             height={430}
           />
