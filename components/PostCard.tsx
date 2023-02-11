@@ -31,6 +31,7 @@ const imgStyle = css`
   object-position: center;
   @media (max-width: 768px) {
     width: 100%;
+    height: 300px;
   }
 `;
 const contentStyle = css`
@@ -111,8 +112,9 @@ function PostCard({
       {posts &&
         posts.length > 0 &&
         posts.map((post) => {
+          console.log(post.id);
           return (
-            <Link key={post.id} href={to(post.id)} css={linkStyle}>
+            <Link key={post.id} href={to(post?.id)} css={linkStyle}>
               {post.imgLink && (
                 <Image
                   src={post.imgLink}
