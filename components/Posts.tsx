@@ -10,7 +10,7 @@ const postCardsContainer = css`
   gap: 40px;
   @media (max-width: 768px) {
     margin: 80px 0;
-    gap: 120px;
+    gap: 80px;
   }
 `;
 
@@ -23,7 +23,7 @@ export default function Posts({
 }) {
   return (
     <div css={postCardsContainer}>
-      {posts && <PostCard cntMenu={cntMenu} posts={posts} />}
+      <PostCard cntMenu={cntMenu} posts={posts} />
     </div>
   );
 }

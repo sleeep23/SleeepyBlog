@@ -10,7 +10,6 @@ export interface PostThumbnailType {
   date: string;
   tags: Array<string>;
   imgLink: string | null;
-  published: boolean;
 }
 
 export interface PostsType extends Array<DbPostContents> {}

@@ -109,33 +109,31 @@ function PostCard({
     <>
       <h1 css={heading}>{cntMenu}</h1>
       {posts &&
+        posts.length > 0 &&
         posts.map((post) => {
-          if (post.published) {
-            return (
-              <Link key={post.id} href={to(post.id)} css={linkStyle}>
-                {post.imgLink && (
-                  <Image
-                    src={post.imgLink}
-                    alt={post.title}
-                    width={200}
-                    height={200}
-                    css={imgStyle}
-                  />
-                )}
-                <section css={contentStyle}>
-                  <h1>{post.title}</h1>
-                  <p>{post.description}</p>
-                  <section css={tagAndDateStyle}>
-                    <p>{post.date}</p>
-                    <Tags tags={post.tags} />
-                  </section>
+          return (
+            <Link key={post.id} href={to(post.id)} css={linkStyle}>
+              {post.imgLink && (
+                <Image
+                  src={post.imgLink}
+                  alt={post.title}
+                  width={200}
+                  height={200}
+                  css={imgStyle}
+                />
+              )}
+              <section css={contentStyle}>
+                <h1>{post.title}</h1>
+                <p>{post.description}</p>
+                <section css={tagAndDateStyle}>
+                  <p>{post.date}</p>
+                  <Tags tags={post.tags} />
                 </section>
-              </Link>
-            );
-          }
+              </section>
+            </Link>
+          );
         })}
-
-      {/*{!cntPost && <div css={postNotExisting}>No Posts yet!</div>}*/}
+      {!posts || (posts.length === 0 && <div>No Posts Yet!</div>)}
     </>
   );
 }
