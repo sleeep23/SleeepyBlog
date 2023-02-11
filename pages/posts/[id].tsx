@@ -13,6 +13,7 @@ import axios from 'axios';
 import { rootNotionPageId, server } from '../../config';
 import { PostThumbnailType } from '../../lib/type';
 import { getChildPageIds, getDb } from '../api/posts';
+import { useRouter } from 'next/router';
 
 const sectionStyle = css`
   display: flex;
@@ -54,20 +55,7 @@ interface ContextType {
   };
 }
 
-export const getStaticProps = async (context: ContextType) => {
-  const postId = context.params.id as string;
-  const recordMap = await notion.getPage(postId);
-
-  return {
-    props: {
-      recordMap,
-    },
-    revalidate: 300,
-  };
-};
-
 export async function getStaticPaths() {
-  // const res = await axios.get(`${server}/api/posts`);
   let postIds: string[] = [];
   const parentPage = await notion.getPage(rootNotionPageId);
   await Promise.all(
@@ -92,6 +80,18 @@ export async function getStaticPaths() {
   };
 }
 
+export const getStaticProps = async (context: ContextType) => {
+  const postId = context.params.id as string;
+  const recordMap = await notion.getPage(postId);
+
+  return {
+    props: {
+      recordMap,
+    },
+    revalidate: 300,
+  };
+};
+
 const getImagePath = (recordMap: ExtendedRecordMap) => {
   const cover_section_key = Object.keys(recordMap.block).at(0) as string;
   return recordMap.block[cover_section_key].value.format.page_cover;
@@ -102,8 +102,12 @@ export default function SinglePost({
 }: {
   recordMap: ExtendedRecordMap;
 }) {
+  const router = useRouter();
   const title = getPageTitle(recordMap);
   const src = getImagePath(recordMap);
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   return (
     <ArticleLayout>
       <section css={sectionStyle}>
