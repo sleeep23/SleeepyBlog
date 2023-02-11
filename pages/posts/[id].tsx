@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { css } from '@emotion/react';
 
 import Image from 'next/image';
@@ -8,7 +8,6 @@ import { NotionPage } from '../../components/NotionPage';
 import notion from '../../lib/notion';
 import { ExtendedRecordMap } from 'notion-types';
 import { getPageTitle } from 'notion-utils';
-import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
 
 import axios from 'axios';
 import { server } from '../../config';
@@ -84,7 +83,7 @@ export async function getStaticPaths() {
   });
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }
 
