@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import ArticleLayout from '../../components/layout/articleLayout';
 import PostsMenu from '../../components/PostsMenu';
