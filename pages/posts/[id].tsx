@@ -10,8 +10,9 @@ import { ExtendedRecordMap } from 'notion-types';
 import { getPageTitle } from 'notion-utils';
 
 import axios from 'axios';
-import { server } from '../../config';
+import { rootNotionPageId, server } from '../../config';
 import { PostThumbnailType } from '../../lib/type';
+import { getChildPageIds, getDb } from '../api/posts';
 
 const sectionStyle = css`
   display: flex;
@@ -66,21 +67,25 @@ export const getStaticProps = async (context: ContextType) => {
 };
 
 export async function getStaticPaths() {
-  const res = await axios.get(`${server}/api/posts`);
-  const databases = Object.keys(res.data.posts);
+  // const res = await axios.get(`${server}/api/posts`);
   let postIds: string[] = [];
+  const parentPage = await notion.getPage(rootNotionPageId);
   await Promise.all(
-    databases.map((key) => {
-      res.data.posts[key]
-        .filter((item: PostThumbnailType) => item !== null)
-        .map((item: PostThumbnailType) => postIds.push(item.id));
+    Object.keys(parentPage.collection).map(async (key) => {
+      const db = await getDb(parentPage.collection, key);
+      const childIds = await getChildPageIds(db);
+      if (childIds) {
+        postIds = [...childIds, ...postIds];
+      }
     })
   );
-  const paths = postIds.map((postId: string) => {
-    return {
-      params: { id: postId },
-    };
-  });
+  const paths = await Promise.all(
+    postIds.map((postId: string) => {
+      return {
+        params: { id: postId },
+      };
+    })
+  );
   return {
     paths,
     fallback: false,

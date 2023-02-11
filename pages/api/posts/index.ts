@@ -4,10 +4,10 @@ import { rootNotionPageId } from '../../../config';
 import { CollectionMap, ExtendedRecordMap } from 'notion-types';
 import { getPageTitle } from 'notion-utils';
 
-const getDb = async (collection: CollectionMap, key: string) => {
+export const getDb = async (collection: CollectionMap, key: string) => {
   return await notion.getPage(collection[key].value.parent_id);
 };
-const getChildPageIds = async (
+export const getChildPageIds = async (
   db: ExtendedRecordMap
 ): Promise<string[] | undefined> => {
   const collectionId = Object.keys(db.collection).at(0);
@@ -24,7 +24,7 @@ const getChildPageIds = async (
   }
 };
 
-const getPageInfo = async (id: string) => {
+export const getPageInfo = async (id: string) => {
   const recordMap = await notion.getPage(id);
   const key = (await Object.keys(recordMap.block).at(0)) as string;
   const [title, description, date, tags, imgLink, published] =
