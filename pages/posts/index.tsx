@@ -5,7 +5,6 @@ import PostsMenu from '../../components/PostsMenu';
 import { server } from '../../config';
 import { useQuery } from '@tanstack/react-query';
 import Posts from '../../components/Posts';
-import { useRouter } from 'next/router';
 import { PostThumbnailType } from '../../lib/type';
 
 export default function Index() {

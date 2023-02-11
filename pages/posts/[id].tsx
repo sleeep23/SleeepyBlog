@@ -7,6 +7,9 @@ import notion from '../../lib/notion';
 import { ExtendedRecordMap } from 'notion-types';
 import { NotionPage } from '../../components/NotionPage';
 import { getPageTitle } from 'notion-utils';
+import axios from 'axios';
+import { server } from '../../config';
+import { PostThumbnailType } from '../../lib/type';
 
 const sectionStyle = css`
   display: flex;
@@ -32,10 +35,10 @@ const sectionStyle = css`
   }
 `;
 
-export const imgStyle = css`
-  width: 100%;
+const imgStyle = css`
+  width: 700px;
   border-radius: 20px;
-  margin: 40px 0 0 0;
+  margin: 10px 0 0 0;
   @media (max-width: 768px) {
     width: 100%;
     height: auto;
@@ -51,17 +54,31 @@ interface ContextType {
 export const getStaticProps = async (context: ContextType) => {
   const postId = context.params.id as string;
   const recordMap = await notion.getPage(postId);
+
   return {
     props: {
       recordMap,
     },
-    revalidate: 10,
+    revalidate: 300,
   };
 };
 
 export async function getStaticPaths() {
+  const res = await axios.get(`${server}/api/posts`);
+  const databases = Object.keys(res.data.posts);
+  let postIds: string[] = [];
+  databases.map((key) => {
+    res.data.posts[key]
+      .filter((item: PostThumbnailType) => item !== null)
+      .map((item: PostThumbnailType) => postIds.push(item.id));
+  });
+  const paths = postIds.map((postId: string) => {
+    return {
+      params: { id: postId },
+    };
+  });
   return {
-    paths: [],
+    paths,
     fallback: true,
   };
 }
@@ -88,7 +105,7 @@ export default function SinglePost({
             src={src}
             alt={title}
             width={700}
-            height={430}
+            height={500}
           />
           <NotionPage recordMap={recordMap} />
         </section>
