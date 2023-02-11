@@ -13,7 +13,7 @@ export const getDatabaseId = async (selectedMenu: string): Promise<string> => {
   return dbs.data.databases[selectedMenu];
 };
 
-export const getItemsInId = async (id: string): Promise<string[]> => {
+export const getItemIdsInDatabaseId = async (id: string): Promise<string[]> => {
   const posts = await axios.get(`${server}/api/database/${id}`);
   return posts.data.postIds;
 };
@@ -26,7 +26,7 @@ export const getDatabaseItemIds = async (selectedDatabases: string) => {
       databases.map(async (db) => {
         const db_id = await getDatabaseId(db);
         await console.log(db_id);
-        const items = await getItemsInId(db_id);
+        const items = await getItemIdsInDatabaseId(db_id);
         await console.log(items);
         posts = [...posts, ...items];
       })
@@ -35,12 +35,13 @@ export const getDatabaseItemIds = async (selectedDatabases: string) => {
     return posts;
   } else {
     const db_id = await getDatabaseId(selectedDatabases);
-    return await getItemsInId(db_id);
+    return await getItemIdsInDatabaseId(db_id);
   }
 };
 
 export default function Index() {
-  const id = useRouter();
+  const router = useRouter();
+  const { menu } = router.query;
   const [dbNames, setDbNames] = useState(['']);
   const [cntMenu, setCntMenu] = useState<string>('All');
   const queryTime = 1000 * 60 * 5;
@@ -60,7 +61,6 @@ export default function Index() {
     isSuccess,
   } = useQuery(['posts'], queryFn, {
     staleTime: queryTime,
-    cacheTime: queryTime,
   });
   useEffect(() => {
     const getDatabaseNames = async () => {
