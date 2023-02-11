@@ -49,7 +49,6 @@ export default function Index() {
       );
       posts.push(...arr);
     }
-    console.log(posts);
     return (
       <ArticleLayout>
         <PostsMenu
