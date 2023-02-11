@@ -1,12 +1,15 @@
-import React from 'react';
-import ArticleLayout from '../../components/layout/articleLayout';
+import React, { useState } from 'react';
 import { css } from '@emotion/react';
+
 import Image from 'next/image';
+import ArticleLayout from '../../components/layout/articleLayout';
+import { NotionPage } from '../../components/NotionPage';
 
 import notion from '../../lib/notion';
 import { ExtendedRecordMap } from 'notion-types';
-import { NotionPage } from '../../components/NotionPage';
 import { getPageTitle } from 'notion-utils';
+import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
+
 import axios from 'axios';
 import { server } from '../../config';
 import { PostThumbnailType } from '../../lib/type';
@@ -67,11 +70,13 @@ export async function getStaticPaths() {
   const res = await axios.get(`${server}/api/posts`);
   const databases = Object.keys(res.data.posts);
   let postIds: string[] = [];
-  databases.map((key) => {
-    res.data.posts[key]
-      .filter((item: PostThumbnailType) => item !== null)
-      .map((item: PostThumbnailType) => postIds.push(item.id));
-  });
+  await Promise.all(
+    databases.map((key) => {
+      res.data.posts[key]
+        .filter((item: PostThumbnailType) => item !== null)
+        .map((item: PostThumbnailType) => postIds.push(item.id));
+    })
+  );
   const paths = postIds.map((postId: string) => {
     return {
       params: { id: postId },
@@ -93,23 +98,15 @@ export default function SinglePost({
 }: {
   recordMap: ExtendedRecordMap;
 }) {
-  if (recordMap) {
-    const title = getPageTitle(recordMap);
-    const src = getImagePath(recordMap);
-    return (
-      <ArticleLayout>
-        <section css={sectionStyle}>
-          <h1>{title}</h1>
-          <Image
-            css={imgStyle}
-            src={src}
-            alt={title}
-            width={700}
-            height={500}
-          />
-          <NotionPage recordMap={recordMap} />
-        </section>
-      </ArticleLayout>
-    );
-  }
+  const title = getPageTitle(recordMap);
+  const src = getImagePath(recordMap);
+  return (
+    <ArticleLayout>
+      <section css={sectionStyle}>
+        <h1>{title}</h1>
+        <Image css={imgStyle} src={src} alt={title} width={700} height={500} />
+        <NotionPage recordMap={recordMap} />
+      </section>
+    </ArticleLayout>
+  );
 }

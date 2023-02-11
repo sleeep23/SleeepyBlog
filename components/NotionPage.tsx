@@ -7,7 +7,6 @@ import { NotionRenderer } from 'react-notion-x';
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import { css } from '@emotion/react';
 
 const Code = dynamic(() =>
   import('react-notion-x/build/third-party/code').then(async (m) => {
