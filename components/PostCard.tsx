@@ -96,10 +96,10 @@ const postNotExisting = css`
 `;
 
 function PostCard({
-  cntPost,
+  posts,
   cntMenu,
 }: {
-  cntPost: PostThumbnailType[] | undefined;
+  posts: PostThumbnailType[] | undefined;
   cntMenu: string;
 }) {
   const to = (id: string) => {
@@ -108,9 +108,9 @@ function PostCard({
   return (
     <>
       <h1 css={heading}>{cntMenu}</h1>
-      {cntPost &&
-        cntPost.length >= 1 &&
-        cntPost.map((post) => {
+      {posts &&
+        posts.length > 0 &&
+        posts.map((post) => {
           return (
             <Link key={post.id} href={to(post.id)} css={linkStyle}>
               {post.imgLink && (
@@ -133,9 +133,7 @@ function PostCard({
             </Link>
           );
         })}
-      {cntPost && cntPost.length < 1 && (
-        <div css={postNotExisting}>No Posts yet!</div>
-      )}
+      {!posts || (posts.length === 0 && <div>No Posts Yet!</div>)}
     </>
   );
 }

@@ -1,5 +1,3 @@
-import { MdBlock } from 'notion-to-md/build/types';
-
 export interface DbPostContents {
   name: string;
   posts: Array<PostThumbnailType>;
@@ -10,7 +8,7 @@ export interface PostThumbnailType {
   title: string;
   description?: string;
   date: string;
-  tags: Array<TagType>;
+  tags: Array<string>;
   imgLink: string | null;
 }
 
@@ -24,5 +22,4 @@ export interface TagType {
 
 export interface PostContentType extends PostThumbnailType {
   content: string;
-  // content: MdBlock[];
 }

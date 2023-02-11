@@ -3,12 +3,10 @@ import ArticleLayout from '../../components/layout/articleLayout';
 import { css } from '@emotion/react';
 import Image from 'next/image';
 
-import { PostContentType } from '../../lib/type';
-import { useRouter } from 'next/router';
-
-import { Markdown } from '../../components/Markdown';
-import { useQuery } from '@tanstack/react-query';
-import { fetchSinglePost } from '../../lib/fetchers';
+import notion from '../../lib/notion';
+import { ExtendedRecordMap } from 'notion-types';
+import { NotionPage } from '../../components/NotionPage';
+import { getPageTitle } from 'notion-utils';
 
 const sectionStyle = css`
   display: flex;
@@ -34,60 +32,65 @@ const sectionStyle = css`
   }
 `;
 
-const imgStyle = css`
+export const imgStyle = css`
   width: 100%;
   border-radius: 20px;
-  margin-bottom: 40px;
+  margin: 40px 0 0 0;
   @media (max-width: 768px) {
     width: 100%;
     height: auto;
   }
 `;
 
-export default function SinglePost() {
-  const router = useRouter();
-  const postId = router.query.id as string;
-  const { isLoading, isSuccess, isError, data, error } = useQuery(
-    ['single-post', router.query.id],
-    () => fetchSinglePost(postId),
-    { staleTime: 3000 }
-  );
+interface ContextType {
+  params: {
+    id: string;
+  };
+}
 
-  if (isLoading) {
-    console.log(`Loading post ${postId}...`);
-    return (
-      <ArticleLayout>
-        <div>Loading...</div>
-      </ArticleLayout>
-    );
-  }
+export const getStaticProps = async (context: ContextType) => {
+  const postId = context.params.id as string;
+  const recordMap = await notion.getPage(postId);
+  return {
+    props: {
+      recordMap,
+    },
+    revalidate: 10,
+  };
+};
 
-  if (isError) {
-    console.log('Error : ', error);
-    return (
-      <ArticleLayout>
-        <div>Error...</div>
-      </ArticleLayout>
-    );
-  }
-  const post = data as PostContentType;
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: true,
+  };
+}
 
-  if (isSuccess) {
+const getImagePath = (recordMap: ExtendedRecordMap) => {
+  const cover_section_key = Object.keys(recordMap.block).at(0) as string;
+  return recordMap.block[cover_section_key].value.format.page_cover;
+};
+
+export default function SinglePost({
+  recordMap,
+}: {
+  recordMap: ExtendedRecordMap;
+}) {
+  if (recordMap) {
+    const title = getPageTitle(recordMap);
+    const src = getImagePath(recordMap);
     return (
       <ArticleLayout>
         <section css={sectionStyle}>
-          <h1>{post && post.title}</h1>
-          <p>{post && post.date}</p>
-          {post && (
-            <Image
-              css={imgStyle}
-              src={post.imgLink as string}
-              alt={post.title}
-              width={700}
-              height={430}
-            />
-          )}
-          {post && <Markdown content={post.content} />}
+          <h1>{title}</h1>
+          <Image
+            css={imgStyle}
+            src={src}
+            alt={title}
+            width={700}
+            height={430}
+          />
+          <NotionPage recordMap={recordMap} />
         </section>
       </ArticleLayout>
     );

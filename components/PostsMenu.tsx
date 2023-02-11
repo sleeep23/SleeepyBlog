@@ -27,10 +27,8 @@ function PostsMenu({
   setCntMenu: React.Dispatch<React.SetStateAction<string>>;
   menuItems: string[] | undefined;
 }) {
-  const [isClicked, setIsClicked] = useState<boolean>(true);
   return (
     <section css={sectionStyle}>
-      <button onClick={() => setCntMenu(() => 'All')}>All</button>
       {menuItems &&
         menuItems.map((item) => {
           return (

@@ -1,44 +1,63 @@
-import React, { use, useEffect, useState } from 'react';
-import { PostsType } from '../../lib/type';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import ArticleLayout from '../../components/layout/articleLayout';
-import Posts from '../../components/Posts';
 import PostsMenu from '../../components/PostsMenu';
-
+import { server } from '../../config';
 import { useQuery } from '@tanstack/react-query';
-import { fetchPosts } from '../../lib/fetchers';
+import Posts from '../../components/Posts';
+import { useRouter } from 'next/router';
+import { PostThumbnailType } from '../../lib/type';
 
 export default function Index() {
   const [cntMenu, setCntMenu] = useState<string>('All');
-  const { isError, isSuccess, isLoading, data, error } = useQuery(
-    ['posts'],
-    fetchPosts,
-    { staleTime: 3000 }
-  );
+  const queryTime = 1000 * 60 * 5;
+  const queryFn = async () => {
+    const res = await axios.get(`${server}/api/posts`);
+    return res.data;
+  };
+  const { data, isLoading, isError, isSuccess } = useQuery(['posts'], queryFn, {
+    staleTime: queryTime,
+    cacheTime: queryTime,
+  });
 
   if (isLoading) {
-    console.log('Loading posts ...');
     return (
       <ArticleLayout>
-        <div>Loading...</div>
+        <div>Loading</div>
       </ArticleLayout>
     );
   }
-
   if (isError) {
-    console.log('Error : ', error);
     return (
       <ArticleLayout>
-        <div>Error...</div>
+        <div>Error</div>
       </ArticleLayout>
     );
   }
-  const posts = data as PostsType;
-  const menuItems = posts?.map((db) => db.name);
   if (isSuccess) {
+    const databases = Object.keys(data.posts);
+    let posts: PostThumbnailType[] = [];
+    if (cntMenu === 'All') {
+      databases.map((key) => {
+        const arr = data.posts[key].filter(
+          (item: PostThumbnailType) => item !== null
+        );
+        posts.push(...arr);
+      });
+    } else {
+      const arr = data.posts[cntMenu].filter(
+        (item: PostThumbnailType) => item !== null
+      );
+      posts.push(...arr);
+    }
+    console.log(posts);
     return (
       <ArticleLayout>
-        <PostsMenu setCntMenu={setCntMenu} menuItems={menuItems} />
-        {posts && <Posts cntMenu={cntMenu} data={posts} />}
+        <PostsMenu
+          setCntMenu={setCntMenu}
+          menuItems={['All', 'Projects', 'Development']}
+        />
+        <Posts cntMenu={cntMenu} posts={posts} />
       </ArticleLayout>
     );
   }
