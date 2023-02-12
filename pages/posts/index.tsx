@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import ArticleLayout from '../../components/layout/articleLayout';
+import ArticleLayout from '../../components/layout/ArticleLayout';
 import PostsMenu from '../../components/PostsMenu';
 import { server } from '../../config';
 import { useQuery } from '@tanstack/react-query';

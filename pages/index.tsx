@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import Head from 'next/head';
-import Layout from '../components/layout/layout';
+import Layout from '../components/layout/Layout';
 import LandingIntro from '../components/LandingIntro';
 import LandingSideSocialLinks from '../components/LandingSideSocialLinks';
 

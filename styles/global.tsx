@@ -94,9 +94,6 @@ export function GlobalStyles() {
             {
               display: 'block',
             },
-          'nav ul': {
-            // listStyle: 'none',
-          },
           'blockquote, q': {
             quotes: 'none',
           },

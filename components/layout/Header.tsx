@@ -1,6 +1,7 @@
 // /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 const Container = css`
   width: 100%;
@@ -11,8 +12,8 @@ const Container = css`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  position: sticky;
-  border-bottom: 1px solid rgba(0, 27, 55, 0.1);
+  position: fixed;
+  top: 0;
 `;
 
 const LinkContainer = css`
@@ -47,19 +48,21 @@ const link = css`
 
 export default function Header() {
   return (
-    <div css={Container}>
-      <h2>
-        <Link href="/" css={logo}>
-          Sleep23&apos;s Space
-        </Link>
-      </h2>
-      <div css={LinkContainer}>
-        <li>
-          <Link href="/posts" css={link}>
-            Writings
+    <>
+      <div css={Container}>
+        <h2>
+          <Link href="/" css={logo}>
+            Sleep23&apos;s Space
           </Link>
-        </li>
+        </h2>
+        <div css={LinkContainer}>
+          <li>
+            <Link href="/posts" css={link}>
+              Writings
+            </Link>
+          </li>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

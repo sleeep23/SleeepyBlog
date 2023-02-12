@@ -2,16 +2,14 @@ import React from 'react';
 import { css } from '@emotion/react';
 
 import Image from 'next/image';
-import ArticleLayout from '../../components/layout/articleLayout';
+import ArticleLayout from '../../components/layout/ArticleLayout';
 import { NotionPage } from '../../components/NotionPage';
 
 import notion from '../../lib/notion';
 import { ExtendedRecordMap } from 'notion-types';
 import { getPageTitle } from 'notion-utils';
 
-import axios from 'axios';
 import { rootNotionPageId, server } from '../../config';
-import { PostThumbnailType } from '../../lib/type';
 import { getChildPageIds, getDb } from '../api/posts';
 import { useRouter } from 'next/router';
 
@@ -45,7 +43,11 @@ const imgStyle = css`
   margin: 10px 0 0 0;
   @media (max-width: 768px) {
     width: 100%;
-    height: auto;
+    height: 400px;
+  }
+  @media (max-width: 480px) {
+    width: 100%;
+    height: 280px;
   }
 `;
 

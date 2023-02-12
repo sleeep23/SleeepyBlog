@@ -39,7 +39,7 @@ const lottieContainer = css`
 
 export const layout = css`
   width: 100%;
-  padding: 120px 0;
+  padding: 120px 0 80px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

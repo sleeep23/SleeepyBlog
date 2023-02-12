@@ -9,9 +9,7 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
 const Code = dynamic(() =>
-  import('react-notion-x/build/third-party/code').then(async (m) => {
-    return m.Code;
-  })
+  import('react-notion-x/build/third-party/code').then(async (m) => m.Code)
 );
 
 const Collection = dynamic(() =>

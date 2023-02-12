@@ -1,11 +1,13 @@
 import React from 'react';
-import Header from './header';
-import Footer from './footer';
+import Header from './Header';
 import { css } from '@emotion/react';
+import Footer from './Footer';
 
 const contentStyle = css`
+  display: block;
   width: 100%;
   height: calc(100% - 60px);
+  margin-top: 60px;
   padding: 0 150px;
   background-color: #1f2028;
   @media (max-width: 768px) {
