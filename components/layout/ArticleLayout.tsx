@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 const contentStyle = css`
   position: relative;
   max-width: 768px;
-  margin: 120px auto 60px auto;
+  margin: 60px auto 60px auto;
   @media (max-width: 768px) {
     padding: 0 16px 120px 16px;
   }
@@ -14,8 +14,10 @@ const contentStyle = css`
 
 export default function ArticleLayout({
   children,
+  showProgress,
 }: {
   children: React.ReactNode;
+  showProgress: boolean;
 }) {
   const [onScroll, setOnScroll] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -37,12 +39,8 @@ export default function ArticleLayout({
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  useEffect(() => {
-    console.log(scrollProgress);
-    console.log(onScroll);
-  }, [scrollProgress]);
-
   const headerBgColor = onScroll ? '#191919' : 'inherit';
+  const displayProgressBar = showProgress ? 'visible' : 'none';
   return (
     <>
       <div
@@ -57,6 +55,7 @@ export default function ArticleLayout({
       </div>
       <div
         css={css`
+          display: ${displayProgressBar};
           height: 1.5px;
           width: 100%;
           background-color: #2563e8;

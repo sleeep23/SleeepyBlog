@@ -111,7 +111,7 @@ export default function SinglePost({
     return <div>Loading...</div>;
   }
   return (
-    <ArticleLayout>
+    <ArticleLayout showProgress={true}>
       <section css={sectionStyle}>
         <h1>{title}</h1>
         <Image css={imgStyle} src={src} alt={title} width={700} height={500} />

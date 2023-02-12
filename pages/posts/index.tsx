@@ -21,14 +21,14 @@ export default function Index() {
 
   if (isLoading) {
     return (
-      <ArticleLayout>
+      <ArticleLayout showProgress={false}>
         <div>Loading</div>
       </ArticleLayout>
     );
   }
   if (isError) {
     return (
-      <ArticleLayout>
+      <ArticleLayout showProgress={false}>
         <div>Error</div>
       </ArticleLayout>
     );
@@ -51,7 +51,7 @@ export default function Index() {
       posts.push(...arr);
     }
     return (
-      <ArticleLayout>
+      <ArticleLayout showProgress={false}>
         <PostsMenu
           setCntMenu={setCntMenu}
           menuItems={['All', 'Projects', 'Development']}

@@ -5,6 +5,7 @@ import Footer from './Footer';
 
 const contentStyle = css`
   display: block;
+  position: relative;
   width: 100%;
   height: calc(100% - 60px);
   margin-top: 60px;
