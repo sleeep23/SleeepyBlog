@@ -34,6 +34,7 @@ export default function Index() {
     );
   }
   if (isSuccess) {
+    console.log(data.posts);
     const databases = Object.keys(data.posts);
     let posts: PostThumbnailType[] = [];
     if (cntMenu === 'All') {
