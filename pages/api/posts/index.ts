@@ -35,7 +35,7 @@ export const getPageInfo = async (id: string) => {
         .start_date,
       recordMap.block[key].value.properties['B|X?'].at(0).at(0).split(','),
       recordMap.block[key].value.format.page_cover,
-      !!recordMap.block[key].value.properties['k<e;'],
+      recordMap.block[key].value.properties['k<e;'],
     ]);
   const result = {
     id,
@@ -45,7 +45,7 @@ export const getPageInfo = async (id: string) => {
     tags,
     imgLink,
   };
-  if (published) {
+  if (published?.at(0).at(0) === 'Yes') {
     return result;
   }
 };
