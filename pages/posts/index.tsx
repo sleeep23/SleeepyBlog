@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import ArticleLayout from '../../components/layout/ArticleLayout';
-import PostsMenu from '../../components/PostsMenu';
+import PostsMenu, { menuSectionStyle } from '../../components/PostsMenu';
 import { server } from '../../config';
 import { useQuery } from '@tanstack/react-query';
 import Posts from '../../components/Posts';
 import { PostThumbnailType } from '../../lib/type';
+import PostCardSkeleton from '../../components/PostCardSkeleton';
 
 export default function Index() {
   const [cntMenu, setCntMenu] = useState<string>('All');
@@ -22,7 +23,12 @@ export default function Index() {
   if (isLoading) {
     return (
       <ArticleLayout showProgress={false}>
-        <div>Loading</div>
+        <section css={menuSectionStyle}>
+          <p>All</p>
+          <p>Projects</p>
+          <p>Development</p>
+        </section>
+        <PostCardSkeleton />
       </ArticleLayout>
     );
   }

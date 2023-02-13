@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 import Image from 'next/image';
 
-const tagAndDateStyle = css`
+export const tagAndDateStyle = css`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -25,7 +25,7 @@ const tagAndDateStyle = css`
   }
 `;
 
-const imgStyle = css`
+export const imgStyle = css`
   border-radius: 16px;
   object-fit: cover;
   object-position: center;
@@ -34,7 +34,7 @@ const imgStyle = css`
     height: 300px;
   }
 `;
-const contentStyle = css`
+export const contentStyle = css`
   display: block;
   width: 528px;
   height: 100%;
@@ -54,7 +54,7 @@ const contentStyle = css`
   h1 {
     font-size: 24px;
 `;
-const linkStyle = css`
+export const linkStyle = css`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -135,7 +135,8 @@ function PostCard({
             </Link>
           );
         })}
-      {!posts || (posts.length === 0 && <div>No Posts Yet!</div>)}
+      {!posts ||
+        (posts.length === 0 && <div css={postNotExisting}>No Posts Yet!</div>)}
     </>
   );
 }

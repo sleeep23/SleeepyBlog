@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { css } from '@emotion/react';
 
-const sectionStyle = css`
+export const menuSectionStyle = css`
   width: 100%;
   padding: 40px;
   display: flex;
@@ -28,7 +28,7 @@ function PostsMenu({
   menuItems: string[] | undefined;
 }) {
   return (
-    <section css={sectionStyle}>
+    <section css={menuSectionStyle}>
       {menuItems &&
         menuItems.map((item) => {
           return (

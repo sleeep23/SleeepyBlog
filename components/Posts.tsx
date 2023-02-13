@@ -3,7 +3,7 @@ import { PostsType, PostThumbnailType } from '../lib/type';
 import PostCard from './PostCard';
 import { css } from '@emotion/react';
 
-const postCardsContainer = css`
+export const postCardsContainer = css`
   display: flex;
   flex-direction: column;
   margin: 40px auto;
