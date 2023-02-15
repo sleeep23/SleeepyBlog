@@ -7,8 +7,12 @@ import { useQuery } from '@tanstack/react-query';
 import Posts from '../../components/Posts';
 import { PostThumbnailType } from '../../lib/type';
 import PostCardSkeleton from '../../components/PostCardSkeleton';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 export default function Index() {
+  const route = useRouter();
+  const domain = `${server}${route.route}`;
   const [cntMenu, setCntMenu] = useState<string>('All');
   const queryTime = 1000 * 60 * 5;
   const queryFn = async () => {
@@ -57,13 +61,26 @@ export default function Index() {
       posts.push(...arr);
     }
     return (
-      <ArticleLayout showProgress={false}>
-        <PostsMenu
-          setCntMenu={setCntMenu}
-          menuItems={['All', 'Projects', 'Development']}
-        />
-        <Posts cntMenu={cntMenu} posts={posts} />
-      </ArticleLayout>
+      <>
+        <Head>
+          <meta charSet="utf-8" />
+          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+          <meta property="og:type" content="website" />
+
+          <meta name="description" content="Sleep23's Blog Posts" />
+          <meta name="og:description" content="Sleep23's Blog Posts" />
+
+          <meta property="og:title" content="Sleep23's Blog Posts" />
+          <title>Blog Posts</title>
+        </Head>
+        <ArticleLayout showProgress={false}>
+          <PostsMenu
+            setCntMenu={setCntMenu}
+            menuItems={['All', 'Projects', 'Development']}
+          />
+          <Posts cntMenu={cntMenu} posts={posts} />
+        </ArticleLayout>
+      </>
     );
   }
 }

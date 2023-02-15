@@ -12,8 +12,9 @@ import { getPageTitle } from 'notion-utils';
 import { rootNotionPageId, server } from '../../config';
 import { getChildPageIds, getDb } from '../api/posts';
 import { useRouter } from 'next/router';
+import Chatting from '../../components/Chatting';
 
-const sectionStyle = css`
+const contentStyle = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -104,18 +105,15 @@ export default function SinglePost({
 }: {
   recordMap: ExtendedRecordMap;
 }) {
-  const router = useRouter();
   const title = getPageTitle(recordMap);
   const src = getImagePath(recordMap);
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
   return (
     <ArticleLayout showProgress={true}>
-      <section css={sectionStyle}>
+      <section css={contentStyle}>
         <h1>{title}</h1>
         <Image css={imgStyle} src={src} alt={title} width={700} height={500} />
         <NotionPage recordMap={recordMap} />
+        <Chatting />
       </section>
     </ArticleLayout>
   );

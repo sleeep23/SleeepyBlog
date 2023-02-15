@@ -112,7 +112,6 @@ function PostCard({
       {posts &&
         posts.length > 0 &&
         posts.map((post) => {
-          console.log(post.id);
           return (
             <Link key={post.id} href={to(post?.id)} css={linkStyle}>
               {post.imgLink && (

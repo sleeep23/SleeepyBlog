@@ -1,15 +1,18 @@
 import React from 'react';
-import Head from 'next/head';
-
-import { ExtendedRecordMap } from 'notion-types';
-import { getPageTitle } from 'notion-utils';
-import { NotionRenderer } from 'react-notion-x';
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
+import { ExtendedRecordMap } from 'notion-types';
+import { getPageTitle } from 'notion-utils';
+import { NotionRenderer } from 'react-notion-x';
+import PageHead from './PageHead';
+import { server } from '../config';
+
 const Code = dynamic(() =>
-  import('react-notion-x/build/third-party/code').then(async (m) => m.Code)
+  import('react-notion-x/build/third-party/code').then(async (m) => {
+    return m.Code;
+  })
 );
 
 const Collection = dynamic(() =>
@@ -38,12 +41,12 @@ export const NotionPage = ({ recordMap }: { recordMap: ExtendedRecordMap }) => {
     return null;
   }
   const title = getPageTitle(recordMap);
+  const key = Object.keys(recordMap.block).at(0) as string;
+  const postId = recordMap.block[key].value.parent_id;
+  const url = `${server}/posts/${postId}`;
   return (
     <>
-      <Head>
-        <meta name="description" content="React Notion X Minimal Demo" />
-        <title>{title}</title>
-      </Head>
+      <PageHead title={title} url={url} />
       <NotionRenderer
         recordMap={recordMap}
         components={{
