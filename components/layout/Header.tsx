@@ -1,7 +1,6 @@
 // /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
 const Container = css`
   width: 100%;
@@ -59,7 +58,7 @@ export default function Header() {
         <div css={LinkContainer}>
           <li>
             <Link href="/posts" css={link}>
-              Writings
+              Posts
             </Link>
           </li>
         </div>

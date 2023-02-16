@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { PostsType, PostThumbnailType } from '../lib/type';
+import React from 'react';
+import { PostThumbnailType } from '../lib/type';
 import PostCard from './PostCard';
 import { css } from '@emotion/react';
 
