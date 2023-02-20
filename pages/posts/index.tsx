@@ -8,11 +8,9 @@ import Posts from '../../components/Posts';
 import { PostThumbnailType } from '../../lib/type';
 import PostCardSkeleton from '../../components/PostCardSkeleton';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { getPostsAlignedWithDate } from '../../lib/utils';
 
 export default function Index() {
-  const route = useRouter();
-  const domain = `${server}${route.route}`;
   const [cntMenu, setCntMenu] = useState<string>('All');
   const queryTime = 1000 * 60 * 5;
   const queryFn = async () => {
@@ -44,14 +42,11 @@ export default function Index() {
     );
   }
   if (isSuccess) {
-    console.log(data.posts);
     const databases = Object.keys(data.posts);
     let posts: PostThumbnailType[] = [];
     if (cntMenu === 'All') {
-      databases.map((key) => {
-        const arr = data.posts[key].filter(
-          (item: PostThumbnailType) => item !== null
-        );
+      databases.forEach((key) => {
+        const arr = data.posts[key];
         posts.push(...arr);
       });
     } else {
@@ -78,7 +73,7 @@ export default function Index() {
             setCntMenu={setCntMenu}
             menuItems={['All', 'Projects', 'Development']}
           />
-          <Posts cntMenu={cntMenu} posts={posts} />
+          <Posts cntMenu={cntMenu} posts={getPostsAlignedWithDate(posts)} />
         </ArticleLayout>
       </>
     );

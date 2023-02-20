@@ -69,7 +69,10 @@ export default async function postHandler(
             return await getPageInfo(id);
           })
         );
-        const cntDbPosts = { [dbName]: [...childPageInfos] };
+        const compactedArr = await Promise.all(
+          childPageInfos.filter((child) => child)
+        );
+        const cntDbPosts = { [dbName]: [...compactedArr] };
         posts = { ...posts, ...cntDbPosts };
       }
     })
