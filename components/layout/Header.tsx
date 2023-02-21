@@ -33,22 +33,21 @@ const linkContainer = css`
 `;
 
 const logo = css`
-  color: white;
+  color: var(--color-text-header);
   :visited {
-    color: white;
+    color: inherit;
   }
 `;
 
 const link = css`
-  color: white;
   padding: 11px 16px;
   border-radius: 6px;
   :visited {
-    color: white;
+    color: inherit;
   }
   :hover {
     transition: 0.15s;
-    background-color: #333d4b;
+    background-color: var(--color-btn-hover);
   }
 `;
 

@@ -61,10 +61,8 @@ export const linkStyle = css`
   align-items: center;
   gap: 40px;
   width: 100%;
-  color: #f2f4f6;
-
   &:visited {
-    color: #f2f4f6;
+    color: inherit;
   }
   &:hover {
     & h1 {

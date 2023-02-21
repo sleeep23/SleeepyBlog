@@ -60,7 +60,6 @@ export const layout = css`
 `;
 
 const landingStyle = css`
-  color: white;
   font-size: 24px;
   display: flex;
   flex-direction: column;
@@ -74,7 +73,6 @@ const landingStyle = css`
     font-weight: 300;
     line-height: 54px;
     padding: 20px 0;
-    color: white;
     max-width: 600px;
     white-space: pre-wrap;
     overflow-wrap: break-word;

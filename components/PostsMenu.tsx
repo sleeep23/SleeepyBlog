@@ -10,12 +10,11 @@ export const menuSectionStyle = css`
   align-items: center;
   gap: 40px;
   button {
-    color: white;
     &:hover {
       text-decoration: underline;
     }
     &:visited {
-      color: unset;
+      color: inherit;
     }
   }
 `;

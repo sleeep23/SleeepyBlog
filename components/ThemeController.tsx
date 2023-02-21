@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
 const labelStyle = css`
@@ -22,7 +22,6 @@ const labelStyle = css`
       100% - (var(--size-of-icon, 1.4em) + var(--slider-offset, 0.3em))
     );
     background: #303136;
-    /* change the value of second inset in box-shadow to change the angle and direction of the moon  */
     -webkit-box-shadow: inset -3px -2px 5px -2px #8983f7,
       inset -10px -4px 0 0 #a3dafb;
     box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -4px 0 0 #a3dafb;
@@ -58,8 +57,13 @@ const sliderStyle = css`
 `;
 
 function ThemeController() {
+  const [theme, setTheme] = useState('light');
+  const onClickHandler = (e: any) => {
+    theme === 'light' ? setTheme('dark') : setTheme('light');
+  };
+  console.log(theme);
   return (
-    <label css={labelStyle}>
+    <label css={labelStyle} onClick={onClickHandler}>
       <input type="checkbox" />
       <span css={sliderStyle}></span>
     </label>

@@ -1,6 +1,5 @@
 import type { AppProps } from 'next/app';
 import { GlobalStyles } from '../styles/global';
-import '../styles/github-style.css';
 import 'react-notion-x/src/styles.css';
 import '../styles/one-dark-theme.css';
 

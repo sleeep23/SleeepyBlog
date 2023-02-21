@@ -11,7 +11,6 @@ import { getPageTitle } from 'notion-utils';
 
 import { rootNotionPageId, server } from '../../config';
 import { getChildPageIds, getDb } from '../api/posts';
-import { useRouter } from 'next/router';
 import Chatting from '../../components/Chatting';
 
 const contentStyle = css`

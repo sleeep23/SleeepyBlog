@@ -3,31 +3,21 @@ import { css, Global } from '@emotion/react';
 const font_default =
   '"Spoqa Han Sans Neo", "JetBrains Mono", Menlo, Monaco, "Courier New", monospace, "sans-serif"';
 
-// Theme colors
-const light = '#e4e9f8';
-const lightAccent = '#d8dff0';
-const lightDarker = '#d5d9ee';
+const blue500 = '#3182f6';
+const grey50 = '#f9fafb';
+const grey100 = '#f2f4f6';
+const grey200 = '#e5e8eb';
+const grey400 = '#b0b8c1';
+const grey600 = '#4e5968';
+const grey700 = '#333d4b';
+const grey800 = '#1f2028';
+const grey900 = '#191919';
+const greyBlue900 = '#191f28';
 
-const dark = '#262738';
-const darkAccent = '#2f3044';
-const darker = '#191a22';
+// Theme colors
 
 // Main style colors
-const primary = '#7e37a4';
-const secondary = '#3dffc5';
-const grayLight = '#b0bccc';
-const grayDark = '#606071';
-const grayAccentLight = '#b7b7c9';
 const grayAccentDark = '#f2f4f6';
-
-// Additional style colors
-const buttonDisabled = '#9e9eb6';
-const warning = '#e64358';
-const codeHighlight = '#37394e';
-const avatar = '#281483';
-const sunrise =
-  'linear-gradient(to bottom,#676caf 0%,#4f4983 50%,#6e488b 100%)';
-const sunset = 'linear-gradient(to bottom,#1b0e24 0%,#2b174c 50%,#381d6e 100%)';
 
 export function GlobalStyles() {
   return (
@@ -52,35 +42,21 @@ export function GlobalStyles() {
         styles={{
           'body, body[data-theme="light"], body[data-theme="dark"]': {
             '--font-primary': font_default,
-            '--color-light': lightAccent,
-            '--color-dark': darkAccent,
           },
           'body, body[data-theme="light"]': {
-            '--color-primary': primary,
-            '--color-bg': light,
-            '--color-text': grayAccentDark,
-            '--color-heading': dark,
-            '--color-gray': grayDark,
-            '--color-accent-gray': grayAccentLight,
-            '--color-accent': lightAccent,
-            '--color-accent-darker': lightDarker,
-            '--color-gradient': sunset,
-            '--page-bg': lightDarker,
-            '--code-bg': darkAccent,
+            '--color-text': greyBlue900,
+            '--color-text-header': grey100,
+            '--color-bg': grey50,
+            '--color-btn-hover': grey200,
+            '--color-tags': grey400,
           },
 
           'body[data-theme="dark"]': {
-            '--color-primary': secondary,
-            '--color-bg': dark,
-            '--color-text': lightDarker,
-            '--color-heading': light,
-            '--color-gray': grayLight,
-            '--color-accent-gray': grayAccentDark,
-            '--color-accent': darkAccent,
-            '--color-accent-darker': darker,
-            '--color-gradient': sunrise,
-            '--page-bg': darkAccent,
-            '--code-bg': darkAccent,
+            '--color-text': grey100,
+            '--color-text-header': grey100,
+            '--color-bg': grey800,
+            '--color-btn-hover': grey700,
+            '--color-tags': grey400,
           },
           'html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video':
             {
@@ -101,10 +77,11 @@ export function GlobalStyles() {
             content: '" "',
           },
           'html, body': {
-            backgroundColor: '#1f2028',
+            backgroundColor: 'var(--color-bg)',
             fontFamily: 'var(--font-primary)',
             color: 'var(--color-text)',
             WebkitTextSizeAdjust: '100%',
+            theme: 'dark',
           },
           '*': {
             margin: 0,
@@ -114,7 +91,6 @@ export function GlobalStyles() {
               boxSizing: 'border-box',
             },
             '&:focus': {
-              boxShadow: '0 0 0 2px var(--color-primary)',
               outline: 'none',
               '@media(max-width: 480px)': {
                 boxShadow: 'none',
@@ -129,7 +105,6 @@ export function GlobalStyles() {
             fontSize: '100%',
             verticalAlign: 'baseline',
             background: 'transparent',
-            color: 'var(--color-primary)',
             textDecoration: 'none',
           },
           p: {
@@ -151,7 +126,6 @@ export function GlobalStyles() {
             fontFamily: 'inherit',
             fontSize: 'inherit',
             fontWeight: 'inherit',
-            color: 'var(--color-primary)',
             cursor: 'pointer',
           },
         }}
