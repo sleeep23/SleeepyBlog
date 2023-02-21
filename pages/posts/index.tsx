@@ -62,11 +62,11 @@ export default function Index() {
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta property="og:type" content="website" />
 
-          <meta name="description" content="Sleep23's Blog Posts" />
-          <meta name="og:description" content="Sleep23's Blog Posts" />
+          <meta name="description" content="Sleeep23's Blog Posts" />
+          <meta name="og:description" content="Sleeep23's Blog Posts" />
 
-          <meta property="og:title" content="Sleep23's Blog Posts" />
-          <title>Blog Posts</title>
+          <meta property="og:title" content="Sleeep23's Blog Posts" />
+          <title>Sleeep23&apos;s Blog Posts</title>
         </Head>
         <ArticleLayout showProgress={false}>
           <PostsMenu

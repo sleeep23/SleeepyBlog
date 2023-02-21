@@ -1,6 +1,6 @@
-// /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import Link from 'next/link';
+import ThemeController from '../ThemeController';
 
 const Container = css`
   width: 100%;
@@ -16,13 +16,19 @@ const Container = css`
   top: 0;
 `;
 
-const LinkContainer = css`
+const linkContainer = css`
   width: 900px;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   li {
     list-style: none;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -46,6 +52,18 @@ const link = css`
   }
 `;
 
+const lightSwitch = css`
+  box-sizing: border-box;
+  position: relative;
+  width: 80px;
+  height: fit-content;
+  padding: 11px 16px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 export default function Header() {
   return (
     <>
@@ -55,13 +73,18 @@ export default function Header() {
             Sleep23&apos;s Space
           </Link>
         </h2>
-        <div css={LinkContainer}>
+        <ul css={linkContainer}>
           <li>
             <Link href="/posts" css={link}>
               Posts
             </Link>
           </li>
-        </div>
+          <li>
+            <div css={lightSwitch}>
+              <ThemeController />
+            </div>
+          </li>
+        </ul>
       </div>
     </>
   );
