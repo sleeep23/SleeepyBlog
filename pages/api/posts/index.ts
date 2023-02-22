@@ -35,7 +35,8 @@ export const getPageInfo = async (id: string) => {
         .start_date,
       recordMap.block[key].value.properties['B|X?'].at(0).at(0).split(','),
       recordMap.block[key].value.format.page_cover,
-      recordMap.block[key].value.properties['k<e;'],
+      recordMap.block[key].value.properties['k<e;'] ||
+        recordMap.block[key].value.properties['{~a^'],
     ]);
   const result = {
     id,
@@ -77,5 +78,7 @@ export default async function postHandler(
       }
     })
   );
-  res.send({ posts });
+  res.send({
+    posts,
+  });
 }
