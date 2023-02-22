@@ -40,12 +40,14 @@ export default function ArticleLayout({
     };
   }, []);
   const headerBgColor = onScroll ? '#191919' : 'inherit';
+  const headerTextColor = onScroll ? 'var(--color-text-header)' : 'inherit';
   const displayProgressBar = showProgress ? 'visible' : 'none';
   return (
     <>
       <div
         css={css`
           position: fixed;
+          color: ${headerTextColor};
           background: ${headerBgColor};
           transition: ease-in 0.25s;
           z-index: 100;

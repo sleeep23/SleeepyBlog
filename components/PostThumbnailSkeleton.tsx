@@ -43,14 +43,14 @@ const dateSkeletonStyle = css`
   margin: 10px 0;
 `;
 const shimmerStyle = css`
-  background-color: #3a3d4a;
+  background-color: var(--color-skeleton);
   background-image: linear-gradient(
     to right,
-    #3a3d4a 0%,
-    #2e3039 20%,
-    #3a3d4a 40%,
-    #3a3d4a 60%,
-    #3a3d4a 100%
+    var(--color-skeleton) 0%,
+    var(--color-skeleton-loading) 20%,
+    var(--color-skeleton) 40%,
+    var(--color-skeleton) 60%,
+    var(--color-skeleton) 100%
   );
   background-repeat: no-repeat;
   background-size: 100% 100%;

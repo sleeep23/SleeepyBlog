@@ -1,6 +1,6 @@
-// /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import Link from 'next/link';
+import ThemeController from '../ThemeController';
 
 const Container = css`
   width: 100%;
@@ -16,34 +16,51 @@ const Container = css`
   top: 0;
 `;
 
-const LinkContainer = css`
+const linkContainer = css`
   width: 900px;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   li {
     list-style: none;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
 const logo = css`
-  color: white;
+  color: var(--color-text-header);
   :visited {
-    color: white;
+    color: inherit;
   }
 `;
 
 const link = css`
-  color: white;
   padding: 11px 16px;
   border-radius: 6px;
   :visited {
-    color: white;
+    color: inherit;
   }
   :hover {
     transition: 0.15s;
-    background-color: #333d4b;
+    background-color: var(--color-btn-hover);
   }
+`;
+
+const lightSwitch = css`
+  box-sizing: border-box;
+  position: relative;
+  width: 80px;
+  height: fit-content;
+  padding: 11px 16px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 export default function Header() {
@@ -55,13 +72,18 @@ export default function Header() {
             Sleep23&apos;s Space
           </Link>
         </h2>
-        <div css={LinkContainer}>
+        <ul css={linkContainer}>
           <li>
             <Link href="/posts" css={link}>
               Posts
             </Link>
           </li>
-        </div>
+          <li>
+            <div css={lightSwitch}>
+              <ThemeController />
+            </div>
+          </li>
+        </ul>
       </div>
     </>
   );

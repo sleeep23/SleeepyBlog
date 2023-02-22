@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { css } from '@emotion/react';
 
 export const menuSectionStyle = css`
+  color: inherit;
   width: 100%;
   padding: 40px;
   display: flex;
@@ -10,12 +11,11 @@ export const menuSectionStyle = css`
   align-items: center;
   gap: 40px;
   button {
-    color: white;
     &:hover {
       text-decoration: underline;
     }
     &:visited {
-      color: unset;
+      color: inherit;
     }
   }
 `;
@@ -32,7 +32,11 @@ function PostsMenu({
       {menuItems &&
         menuItems.map((item) => {
           return (
-            <button key={item} onClick={() => setCntMenu(() => item)}>
+            <button
+              style={{ color: 'var(--color-text)' }}
+              key={item}
+              onClick={() => setCntMenu(() => item)}
+            >
               {item}
             </button>
           );

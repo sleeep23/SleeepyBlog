@@ -20,7 +20,7 @@ export const tagStyle = css`
   line-height: 1.4;
   padding: 2px 6px;
   border-radius: 4px;
-  background-color: #4e5968;
+  background-color: var(--color-tags);
   font-size: 8px;
   display: block;
   justify-content: center;

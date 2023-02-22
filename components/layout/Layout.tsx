@@ -10,7 +10,6 @@ const contentStyle = css`
   height: calc(100% - 60px);
   margin-top: 60px;
   padding: 0 150px;
-  background-color: #1f2028;
   @media (max-width: 768px) {
     padding: 40px;
   }

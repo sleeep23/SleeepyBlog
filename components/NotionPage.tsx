@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
@@ -8,6 +8,7 @@ import { getPageTitle } from 'notion-utils';
 import { NotionRenderer } from 'react-notion-x';
 import PageHead from './PageHead';
 import { server } from '../config';
+import useThemeValue from '../lib/Hooks/useThemeValue';
 
 const Code = dynamic(() =>
   import('react-notion-x/build/third-party/code').then(async (m) => {
@@ -36,7 +37,13 @@ const Modal = dynamic(
   }
 );
 
-export const NotionPage = ({ recordMap }: { recordMap: ExtendedRecordMap }) => {
+export const NotionPage = ({
+  recordMap,
+  isLightTheme,
+}: {
+  recordMap: ExtendedRecordMap;
+  isLightTheme: boolean;
+}) => {
   if (!recordMap) {
     return null;
   }
@@ -59,7 +66,7 @@ export const NotionPage = ({ recordMap }: { recordMap: ExtendedRecordMap }) => {
           Code,
         }}
         fullPage={false}
-        darkMode={true}
+        darkMode={!isLightTheme}
         previewImages={!!recordMap.preview_images}
       />
     </>

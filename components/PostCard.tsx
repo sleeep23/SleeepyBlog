@@ -61,10 +61,8 @@ export const linkStyle = css`
   align-items: center;
   gap: 40px;
   width: 100%;
-  color: #f2f4f6;
-
   &:visited {
-    color: #f2f4f6;
+    color: inherit;
   }
   &:hover {
     & h1 {
@@ -72,7 +70,7 @@ export const linkStyle = css`
     }
     & img {
       transform: translateY(-4px);
-      box-shadow: 0 8px 16px -12px #4e5968;
+      box-shadow: 0 8px 16px -12px var(--color-shadow);
       transition: 0.3s ease-in-out;
     }
   }
