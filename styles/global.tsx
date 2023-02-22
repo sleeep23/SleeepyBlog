@@ -15,9 +15,8 @@ const grey900 = '#191919';
 const greyBlue900 = '#191f28';
 
 // Theme colors
-
-// Main style colors
-const grayAccentDark = '#f2f4f6';
+const darkShimmerBg = '#3a3d4a';
+const darkShimmerBgLoading = '#2e3039';
 
 export function GlobalStyles() {
   return (
@@ -49,6 +48,8 @@ export function GlobalStyles() {
             '--color-bg': grey50,
             '--color-btn-hover': grey200,
             '--color-tags': grey400,
+            '--color-skeleton': grey100,
+            '--color-skeleton-loading': grey200,
           },
 
           'body[data-theme="dark"]': {
@@ -56,7 +57,9 @@ export function GlobalStyles() {
             '--color-text-header': grey100,
             '--color-bg': grey800,
             '--color-btn-hover': grey700,
-            '--color-tags': grey400,
+            '--color-tags': grey600,
+            '--color-skeleton': darkShimmerBg,
+            '--color-skeleton-loading': darkShimmerBgLoading,
           },
           'html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video':
             {

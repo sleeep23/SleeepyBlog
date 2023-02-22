@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
+import useThemeAction from '../lib/Hooks/useThemeAction';
+import useThemeValue from '../lib/Hooks/useThemeValue';
+import * as events from 'events';
 
 const labelStyle = css`
   --width-of-switch: 3.5em;
@@ -57,14 +60,21 @@ const sliderStyle = css`
 `;
 
 function ThemeController() {
-  const [theme, setTheme] = useState('light');
-  const onClickHandler = (e: any) => {
-    theme === 'light' ? setTheme('dark') : setTheme('light');
+  const action = useThemeAction();
+  const isLightTheme = useThemeValue();
+  const [isChecked, setIsChecked] = useState(isLightTheme);
+  useEffect(() => {
+    setIsChecked(!isLightTheme);
+  }, [isLightTheme]);
+
+  const handleNewTheme = (e: any) => {
+    document.body.dataset.theme = isChecked ? 'light' : 'dark';
+    action.changeTheme();
+    setIsChecked((prev) => !prev);
   };
-  console.log(theme);
   return (
-    <label css={labelStyle} onClick={onClickHandler}>
-      <input type="checkbox" />
+    <label css={[labelStyle]}>
+      <input type="checkbox" checked={isChecked} onChange={handleNewTheme} />
       <span css={sliderStyle}></span>
     </label>
   );

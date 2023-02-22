@@ -7,6 +7,10 @@ import { QueryClient } from '@tanstack/react-query';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
+import { Analytics } from '@vercel/analytics/react';
+import ThemeProvider from '../lib/Provider/ThemeProvider';
+import { useEffect } from 'react';
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -16,11 +20,17 @@ const queryClient = new QueryClient({
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    document.body.dataset.theme = 'default';
+  }, []);
   return (
     <>
       <GlobalStyles />
       <QueryClientProvider client={queryClient}>
-        <Component {...pageProps} />
+        <ThemeProvider>
+          <Component {...pageProps} />
+        </ThemeProvider>
+        <Analytics />
         {/*<ReactQueryDevtools initialIsOpen={false} />*/}
       </QueryClientProvider>
     </>

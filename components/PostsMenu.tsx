@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { css } from '@emotion/react';
 
 export const menuSectionStyle = css`
+  color: inherit;
   width: 100%;
   padding: 40px;
   display: flex;
@@ -31,7 +32,11 @@ function PostsMenu({
       {menuItems &&
         menuItems.map((item) => {
           return (
-            <button key={item} onClick={() => setCntMenu(() => item)}>
+            <button
+              style={{ color: 'var(--color-text)' }}
+              key={item}
+              onClick={() => setCntMenu(() => item)}
+            >
               {item}
             </button>
           );

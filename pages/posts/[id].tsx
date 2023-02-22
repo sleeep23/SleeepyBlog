@@ -12,6 +12,7 @@ import { getPageTitle } from 'notion-utils';
 import { rootNotionPageId, server } from '../../config';
 import { getChildPageIds, getDb } from '../api/posts';
 import Chatting from '../../components/Chatting';
+import useThemeValue from '../../lib/Hooks/useThemeValue';
 
 const contentStyle = css`
   display: flex;
@@ -104,6 +105,7 @@ export default function SinglePost({
 }: {
   recordMap: ExtendedRecordMap;
 }) {
+  const isLightTheme = useThemeValue();
   const title = getPageTitle(recordMap);
   const src = getImagePath(recordMap);
   return (
@@ -111,8 +113,8 @@ export default function SinglePost({
       <section css={contentStyle}>
         <h1>{title}</h1>
         <Image css={imgStyle} src={src} alt={title} width={700} height={500} />
-        <NotionPage recordMap={recordMap} />
-        <Chatting />
+        <NotionPage recordMap={recordMap} isLightTheme={isLightTheme} />
+        <Chatting isLightTheme={isLightTheme} />
       </section>
     </ArticleLayout>
   );

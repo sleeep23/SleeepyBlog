@@ -7,7 +7,7 @@ const chatSectionStyle = css`
   padding: 0 40px;
 `;
 
-function Chatting() {
+function Chatting({ isLightTheme }: { isLightTheme: boolean }) {
   return (
     <section css={chatSectionStyle}>
       <Giscus
@@ -20,7 +20,7 @@ function Chatting() {
         reactionsEnabled="1"
         emitMetadata="0"
         inputPosition="top"
-        theme="dark"
+        theme={isLightTheme ? 'light' : 'dark'}
         lang="ko"
         loading="lazy"
       />
