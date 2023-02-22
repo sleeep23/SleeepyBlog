@@ -55,6 +55,7 @@ export const contentStyle = css`
     font-size: 24px;
 `;
 export const linkStyle = css`
+  color: var(--color-text);
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
