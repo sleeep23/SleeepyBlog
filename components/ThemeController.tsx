@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import useThemeAction from '../lib/Hooks/useThemeAction';
 import useThemeValue from '../lib/Hooks/useThemeValue';
-import * as events from 'events';
 
 const labelStyle = css`
   --width-of-switch: 3.5em;
@@ -63,18 +62,42 @@ function ThemeController() {
   const action = useThemeAction();
   const isLightTheme = useThemeValue();
   const [isChecked, setIsChecked] = useState(isLightTheme);
+  const [isShown, setIsShown] = useState(false);
+
   useEffect(() => {
     setIsChecked(!isLightTheme);
   }, [isLightTheme]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsShown(true);
+    }, 30);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
 
   const handleNewTheme = (e: any) => {
     document.body.dataset.theme = isChecked ? 'light' : 'dark';
     action.changeTheme();
     setIsChecked((prev) => !prev);
   };
+
   return (
-    <label css={[labelStyle]}>
-      <input type="checkbox" checked={isChecked} onChange={handleNewTheme} />
+    <label
+      css={[
+        labelStyle,
+        css`
+          display: ${isShown ? 'block' : 'none'};
+        `,
+      ]}
+    >
+      <input
+        type="checkbox"
+        checked={isChecked}
+        onChange={handleNewTheme}
+        readOnly
+      />
       <span css={sliderStyle}></span>
     </label>
   );

@@ -50,6 +50,7 @@ export function GlobalStyles() {
             '--color-tags': grey400,
             '--color-skeleton': grey100,
             '--color-skeleton-loading': grey200,
+            '--color-shadow': grey600,
           },
 
           'body[data-theme="dark"]': {
@@ -60,6 +61,7 @@ export function GlobalStyles() {
             '--color-tags': grey600,
             '--color-skeleton': darkShimmerBg,
             '--color-skeleton-loading': darkShimmerBgLoading,
+            '--color-shadow': grey900,
           },
           'html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video':
             {

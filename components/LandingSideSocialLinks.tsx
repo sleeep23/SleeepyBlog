@@ -15,10 +15,10 @@ const sideStyle = css`
   left: 40px;
   bottom: 0;
   width: 40px;
-  color: #fff;
+  color: var(--color-text);
   & > div {
     margin: 0 19.5px;
-    border-left: 2px solid white;
+    border-left: 2px solid var(--color-text);
     height: 160px;
   }
   @media (max-width: 768px) {
@@ -27,7 +27,7 @@ const sideStyle = css`
 `;
 
 const iconStyle = css`
-  fill: white;
+  fill: var(--color-text);
 `;
 
 function LandingSideSocialLinks() {

@@ -70,7 +70,7 @@ export const linkStyle = css`
     }
     & img {
       transform: translateY(-4px);
-      box-shadow: 0 8px 16px -12px #4e5968;
+      box-shadow: 0 8px 16px -12px var(--color-shadow);
       transition: 0.3s ease-in-out;
     }
   }
