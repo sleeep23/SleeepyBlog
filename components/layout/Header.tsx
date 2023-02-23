@@ -42,6 +42,7 @@ const logo = css`
 const link = css`
   padding: 11px 16px;
   border-radius: 6px;
+  color: var(--color-text-header);
   :visited {
     color: inherit;
   }
