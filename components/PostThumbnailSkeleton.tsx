@@ -3,6 +3,35 @@ import { contentStyle, imgStyle, linkStyle, tagAndDateStyle } from './PostCard';
 import { tagContainer, tagStyle } from './Tags';
 import { css, keyframes } from '@emotion/react';
 
+function PostThumbnailSkeleton() {
+  return (
+    <section css={linkStyle}>
+      <div css={[imgStyle, imgSkeletonStyle, shimmerStyle]} />
+      <section css={contentStyle}>
+        <div css={[titleSkeletonStyle, shimmerStyle]} />
+        <div css={[descriptionSkeletonStyle, shimmerStyle]} />
+        <div css={[descriptionSkeletonStyle, shimmerStyle]} />
+        <div
+          css={[
+            descriptionSkeletonStyle,
+            shimmerStyle,
+            css`
+              width: 50%;
+            `,
+          ]}
+        />
+        <section css={tagAndDateStyle}>
+          <div css={[dateSkeletonStyle, shimmerStyle]} />
+          <div css={tagContainer}>
+            <div css={[tagStyle, tagSkeletonStyle, shimmerStyle]} />
+            <div css={[tagStyle, tagSkeletonStyle, shimmerStyle]} />
+            <div css={[tagStyle, tagSkeletonStyle, shimmerStyle]} />
+          </div>
+        </section>
+      </section>
+    </section>
+  );
+}
 const imgSkeletonStyle = css`
   width: 200px;
   height: 200px;
@@ -42,6 +71,7 @@ const dateSkeletonStyle = css`
   border-radius: 8px;
   margin: 10px 0;
 `;
+
 const shimmerStyle = css`
   background-color: var(--color-skeleton);
   background-image: linear-gradient(
@@ -62,35 +92,5 @@ const shimmerStyle = css`
   -webkit-animation-name: ${placeholderShimmer};
   -webkit-animation-timing-function: linear;
 `;
-
-function PostThumbnailSkeleton() {
-  return (
-    <section css={linkStyle}>
-      <div css={[imgStyle, imgSkeletonStyle, shimmerStyle]} />
-      <section css={contentStyle}>
-        <div css={[titleSkeletonStyle, shimmerStyle]} />
-        <div css={[descriptionSkeletonStyle, shimmerStyle]} />
-        <div css={[descriptionSkeletonStyle, shimmerStyle]} />
-        <div
-          css={[
-            descriptionSkeletonStyle,
-            shimmerStyle,
-            css`
-              width: 50%;
-            `,
-          ]}
-        />
-        <section css={tagAndDateStyle}>
-          <div css={[dateSkeletonStyle, shimmerStyle]} />
-          <div css={tagContainer}>
-            <div css={[tagStyle, tagSkeletonStyle, shimmerStyle]} />
-            <div css={[tagStyle, tagSkeletonStyle, shimmerStyle]} />
-            <div css={[tagStyle, tagSkeletonStyle, shimmerStyle]} />
-          </div>
-        </section>
-      </section>
-    </section>
-  );
-}
 
 export default PostThumbnailSkeleton;

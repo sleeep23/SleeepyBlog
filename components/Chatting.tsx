@@ -2,11 +2,6 @@ import React from 'react';
 import Giscus from '@giscus/react';
 import { css } from '@emotion/react';
 
-const chatSectionStyle = css`
-  width: 100%;
-  padding: 0 40px;
-`;
-
 function Chatting({ isLightTheme }: { isLightTheme: boolean }) {
   return (
     <section css={chatSectionStyle}>
@@ -27,5 +22,10 @@ function Chatting({ isLightTheme }: { isLightTheme: boolean }) {
     </section>
   );
 }
+
+const chatSectionStyle = css`
+  width: 100%;
+  padding: 0 40px;
+`;
 
 export default Chatting;

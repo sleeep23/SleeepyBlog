@@ -3,6 +3,16 @@ import Header from './Header';
 import { css } from '@emotion/react';
 import Footer from './Footer';
 
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <Header />
+      <div css={contentStyle}>{children}</div>
+      {/*<Footer />*/}
+    </>
+  );
+}
+
 const contentStyle = css`
   display: block;
   position: relative;
@@ -14,13 +24,3 @@ const contentStyle = css`
     padding: 40px;
   }
 `;
-
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <Header />
-      <div css={contentStyle}>{children}</div>
-      {/*<Footer />*/}
-    </>
-  );
-}

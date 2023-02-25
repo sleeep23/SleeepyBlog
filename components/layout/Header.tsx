@@ -2,6 +2,32 @@ import { css } from '@emotion/react';
 import Link from 'next/link';
 import ThemeController from '../ThemeController';
 
+export default function Header() {
+  return (
+    <>
+      <div css={Container}>
+        <h2>
+          <Link href="/" css={logo}>
+            Sleep23&apos;s Space
+          </Link>
+        </h2>
+        <ul css={linkContainer}>
+          <li>
+            <Link href="/posts" css={link}>
+              Posts
+            </Link>
+          </li>
+          <li>
+            <div css={lightSwitch}>
+              <ThemeController />
+            </div>
+          </li>
+        </ul>
+      </div>
+    </>
+  );
+}
+
 const Container = css`
   width: 100%;
   height: 60px;
@@ -63,29 +89,3 @@ const lightSwitch = css`
   align-items: center;
   justify-content: center;
 `;
-
-export default function Header() {
-  return (
-    <>
-      <div css={Container}>
-        <h2>
-          <Link href="/" css={logo}>
-            Sleep23&apos;s Space
-          </Link>
-        </h2>
-        <ul css={linkContainer}>
-          <li>
-            <Link href="/posts" css={link}>
-              Posts
-            </Link>
-          </li>
-          <li>
-            <div css={lightSwitch}>
-              <ThemeController />
-            </div>
-          </li>
-        </ul>
-      </div>
-    </>
-  );
-}

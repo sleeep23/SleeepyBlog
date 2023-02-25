@@ -4,6 +4,20 @@ import { TagType } from '../lib/type';
 import { css } from '@emotion/react';
 import { changeColor } from '../lib/color';
 
+function Tags({ tags }: { tags: Array<string> }) {
+  return (
+    <div css={tagContainer}>
+      {tags.map((tag: string, index) => {
+        return (
+          <p css={tagStyle} key={index}>
+            {tag}
+          </p>
+        );
+      })}
+    </div>
+  );
+}
+
 export const tagContainer = css`
   display: flex;
   flex-direction: row;
@@ -26,19 +40,5 @@ export const tagStyle = css`
   justify-content: center;
   align-items: center;
 `;
-
-function Tags({ tags }: { tags: Array<string> }) {
-  return (
-    <div css={tagContainer}>
-      {tags.map((tag: string, index) => {
-        return (
-          <p css={tagStyle} key={index}>
-            {tag}
-          </p>
-        );
-      })}
-    </div>
-  );
-}
 
 export default Tags;
