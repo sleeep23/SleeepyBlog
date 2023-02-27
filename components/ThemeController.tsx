@@ -29,7 +29,7 @@ function ThemeController() {
       css={[
         labelStyle,
         css`
-          display: block;
+          display: ${isShown ? 'block' : 'none'};
         `,
       ]}
     >
