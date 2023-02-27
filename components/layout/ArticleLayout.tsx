@@ -3,15 +3,6 @@ import Header from './Header';
 import Footer from './Footer';
 import { css } from '@emotion/react';
 
-const contentStyle = css`
-  position: relative;
-  max-width: 768px;
-  margin: 60px auto 60px auto;
-  @media (max-width: 768px) {
-    padding: 0 16px 120px 16px;
-  }
-`;
-
 export default function ArticleLayout({
   children,
   showProgress,
@@ -75,3 +66,12 @@ export default function ArticleLayout({
     </>
   );
 }
+
+const contentStyle = css`
+  position: relative;
+  max-width: 768px;
+  margin: 60px auto 60px auto;
+  @media (max-width: 768px) {
+    padding: 0 16px 120px 16px;
+  }
+`;

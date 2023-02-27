@@ -6,6 +6,38 @@ import Blob from '../public/lottie/blob.svg';
 // @ts-ignore
 import * as astronaut from '/public/lottie/astronaut.json';
 
+function LandingIntro() {
+  return (
+    <section css={layout}>
+      <div css={landingStyle}>
+        <p>Hi, there? 👋</p>
+        <p>
+          I&apos;m
+          <span> Dongho Seo</span>, a front-end developer 🧑‍💻 focused on
+          enhancing user experience and interface.
+        </p>
+        <p>
+          Contact 👉{' '}
+          <a
+            href="mailto:ehcws333@gm.gist.ac.kr"
+            target="_blank"
+            rel="noreferrer"
+          >
+            ehcws333@gm.gist.ac.kr
+          </a>
+        </p>
+        <div>
+          <Link href="/posts">Checkout my writings!</Link>
+        </div>
+      </div>
+      <div css={lottieContainer}>
+        <Blob css={blobStyle} />
+        <Lottie animationData={astronaut} style={lottieStyle} />
+      </div>
+    </section>
+  );
+}
+
 const lottieStyle: React.CSSProperties = {
   width: '100%',
   height: '100%',
@@ -141,37 +173,5 @@ const landingStyle = css`
     }
   }
 `;
-
-function LandingIntro() {
-  return (
-    <section css={layout}>
-      <div css={landingStyle}>
-        <p>Hi, there? 👋</p>
-        <p>
-          I&apos;m
-          <span> Dongho Seo</span>, a front-end developer 🧑‍💻 focused on
-          enhancing user experience and interface.
-        </p>
-        <p>
-          Contact 👉{' '}
-          <a
-            href="mailto:ehcws333@gm.gist.ac.kr"
-            target="_blank"
-            rel="noreferrer"
-          >
-            ehcws333@gm.gist.ac.kr
-          </a>
-        </p>
-        <div>
-          <Link href="/posts">Checkout my writings!</Link>
-        </div>
-      </div>
-      <div css={lottieContainer}>
-        <Blob css={blobStyle} />
-        <Lottie animationData={astronaut} style={lottieStyle} />
-      </div>
-    </section>
-  );
-}
 
 export default LandingIntro;

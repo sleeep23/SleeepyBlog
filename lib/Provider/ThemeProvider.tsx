@@ -1,6 +1,6 @@
 import React, { createContext, ReactNode, useMemo, useState } from 'react';
 
-export const ThemeValueContext = createContext(true);
+export const ThemeValueContext = createContext(false);
 export const ThemeActionContext = createContext<any | null>(null);
 
 function ThemeProvider({ children }: { children: ReactNode }) {

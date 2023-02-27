@@ -5,96 +5,6 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 import Image from 'next/image';
 
-export const tagAndDateStyle = css`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 20px;
-  p {
-    font-size: 10px;
-    margin: 0;
-  }
-  @media (max-width: 768px) {
-    gap: 10px;
-    flex-direction: column;
-    align-items: flex-start;
-    p {
-      margin: 0;
-    }
-  }
-`;
-
-export const imgStyle = css`
-  border-radius: 16px;
-  object-fit: cover;
-  object-position: center;
-  @media (max-width: 768px) {
-    width: 100%;
-    height: 300px;
-  }
-`;
-export const contentStyle = css`
-  display: block;
-  width: 528px;
-  height: 100%;
-  padding: 20px;
-  gap: 10px;
-  @media (max-width: 768px) {
-    width: 100%;
-    padding: 0;
-  }
-  h1,
-  p {
-    display: block;
-    margin-bottom: 10px;
-    word-break: keep-all;
-    text-decoration-thickness: auto;
-  }
-  h1 {
-    font-size: 24px;
-`;
-export const linkStyle = css`
-  color: var(--color-text);
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 40px;
-  width: 100%;
-  &:visited {
-    color: inherit;
-  }
-  &:hover {
-    & h1 {
-      text-decoration: underline;
-    }
-    & img {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 16px -12px var(--color-shadow);
-      transition: 0.3s ease-in-out;
-    }
-  }
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-`;
-
-const heading = css`
-  font-size: 40px;
-  margin-bottom: 20px;
-`;
-
-const postNotExisting = css`
-  width: 100%;
-  height: auto;
-  padding: 40px;
-  text-align: center;
-  font-size: 28px;
-  opacity: 0.5;
-`;
-
 function PostCard({
   posts,
   cntMenu,
@@ -138,5 +48,95 @@ function PostCard({
     </>
   );
 }
+
+export const tagAndDateStyle = css`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  p {
+    font-size: 10px;
+    margin: 0;
+  }
+  @media (max-width: 768px) {
+    gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    p {
+      margin: 0;
+    }
+  }
+`;
+export const imgStyle = css`
+  border-radius: 16px;
+  object-fit: cover;
+  object-position: center;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 300px;
+  }
+`;
+export const contentStyle = css`
+  display: block;
+  width: 528px;
+  height: 100%;
+  padding: 20px;
+  gap: 10px;
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0;
+  }
+  h1,
+  p {
+    display: block;
+    margin-bottom: 10px;
+    word-break: keep-all;
+    text-decoration-thickness: auto;
+  }
+  h1 {
+    font-size: 24px;
+`;
+
+export const linkStyle = css`
+  color: var(--color-text);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  &:visited {
+    color: inherit;
+  }
+  &:hover {
+    & h1 {
+      text-decoration: underline;
+    }
+    & img {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px -12px var(--color-shadow);
+      transition: 0.3s ease-in-out;
+    }
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`;
+
+const heading = css`
+  font-size: 40px;
+  margin-bottom: 20px;
+`;
+
+const postNotExisting = css`
+  width: 100%;
+  height: auto;
+  padding: 40px;
+  text-align: center;
+  font-size: 28px;
+  opacity: 0.5;
+`;
 
 export default PostCard;

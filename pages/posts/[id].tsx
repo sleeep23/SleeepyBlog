@@ -14,6 +14,72 @@ import { getChildPageIds, getDb } from '../api/posts';
 import Chatting from '../../components/Chatting';
 import useThemeValue from '../../lib/Hooks/useThemeValue';
 
+interface ContextType {
+  params: {
+    id: string;
+  };
+}
+
+export default function SinglePost({
+  recordMap,
+}: {
+  recordMap: ExtendedRecordMap;
+}) {
+  const isLightTheme = useThemeValue();
+  const title = getPageTitle(recordMap);
+  const src = getImagePath(recordMap);
+  return (
+    <ArticleLayout showProgress={true}>
+      <section css={contentStyle}>
+        <h1>{title}</h1>
+        <Image css={imgStyle} src={src} alt={title} width={700} height={500} />
+        <NotionPage recordMap={recordMap} isLightTheme={isLightTheme} />
+        <Chatting isLightTheme={isLightTheme} />
+      </section>
+    </ArticleLayout>
+  );
+}
+const getImagePath = (recordMap: ExtendedRecordMap) => {
+  const cover_section_key = Object.keys(recordMap.block).at(0) as string;
+  return recordMap.block[cover_section_key].value.format.page_cover;
+};
+
+export async function getStaticPaths() {
+  let postIds: string[] = [];
+  const parentPage = await notion.getPage(rootNotionPageId);
+  await Promise.all(
+    Object.keys(parentPage.collection).map(async (key) => {
+      const db = await getDb(parentPage.collection, key);
+      const childIds = await getChildPageIds(db);
+      if (childIds) {
+        postIds = [...childIds, ...postIds];
+      }
+    })
+  );
+  const paths = await Promise.all(
+    postIds.map((postId: string) => {
+      return {
+        params: { id: postId },
+      };
+    })
+  );
+  return {
+    paths,
+    fallback: 'blocking',
+  };
+}
+export const getStaticProps = async (context: ContextType) => {
+  const postId = context.params.id as string;
+
+  const recordMap = await notion.getPage(postId);
+  return {
+    props: {
+      recordMap,
+    },
+    revalidate: 300,
+  };
+};
+
 const contentStyle = css`
   display: flex;
   flex-direction: column;
@@ -51,71 +117,3 @@ const imgStyle = css`
     height: 280px;
   }
 `;
-
-interface ContextType {
-  params: {
-    id: string;
-  };
-}
-
-export async function getStaticPaths() {
-  let postIds: string[] = [];
-  const parentPage = await notion.getPage(rootNotionPageId);
-  await Promise.all(
-    Object.keys(parentPage.collection).map(async (key) => {
-      const db = await getDb(parentPage.collection, key);
-      const childIds = await getChildPageIds(db);
-      if (childIds) {
-        postIds = [...childIds, ...postIds];
-      }
-    })
-  );
-  const paths = await Promise.all(
-    postIds.map((postId: string) => {
-      return {
-        params: { id: postId },
-      };
-    })
-  );
-  return {
-    paths,
-    fallback: 'blocking',
-  };
-}
-
-export const getStaticProps = async (context: ContextType) => {
-  const postId = context.params.id as string;
-  const recordMap = await notion.getPage(postId);
-
-  return {
-    props: {
-      recordMap,
-    },
-    revalidate: 300,
-  };
-};
-
-const getImagePath = (recordMap: ExtendedRecordMap) => {
-  const cover_section_key = Object.keys(recordMap.block).at(0) as string;
-  return recordMap.block[cover_section_key].value.format.page_cover;
-};
-
-export default function SinglePost({
-  recordMap,
-}: {
-  recordMap: ExtendedRecordMap;
-}) {
-  const isLightTheme = useThemeValue();
-  const title = getPageTitle(recordMap);
-  const src = getImagePath(recordMap);
-  return (
-    <ArticleLayout showProgress={true}>
-      <section css={contentStyle}>
-        <h1>{title}</h1>
-        <Image css={imgStyle} src={src} alt={title} width={700} height={500} />
-        <NotionPage recordMap={recordMap} isLightTheme={isLightTheme} />
-        <Chatting isLightTheme={isLightTheme} />
-      </section>
-    </ArticleLayout>
-  );
-}

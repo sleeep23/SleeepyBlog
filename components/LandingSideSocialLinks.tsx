@@ -5,6 +5,23 @@ import Github from '../public/icons/github.svg';
 import Instagram from '../public/icons/instagram.svg';
 import Twitter from '../public/icons/twitter.svg';
 
+function LandingSideSocialLinks() {
+  return (
+    <div css={sideStyle}>
+      <Link href="https://github.com/sleeep23" target="_blank">
+        <Github css={iconStyle} />
+      </Link>
+      <Link href="https://www.instagram.com/sdh_0923/" target="_blank">
+        <Instagram css={iconStyle} />
+      </Link>
+      <Link href="https://twitter.com/sleeep23_" target="_blank">
+        <Twitter css={iconStyle} />
+      </Link>
+      <div />
+    </div>
+  );
+}
+
 const sideStyle = css`
   display: flex;
   flex-direction: column;
@@ -29,22 +46,5 @@ const sideStyle = css`
 const iconStyle = css`
   fill: var(--color-text);
 `;
-
-function LandingSideSocialLinks() {
-  return (
-    <div css={sideStyle}>
-      <Link href="https://github.com/sleeep23" target="_blank">
-        <Github css={iconStyle} />
-      </Link>
-      <Link href="https://www.instagram.com/sdh_0923/" target="_blank">
-        <Instagram css={iconStyle} />
-      </Link>
-      <Link href="https://twitter.com/sleeep23_" target="_blank">
-        <Twitter css={iconStyle} />
-      </Link>
-      <div />
-    </div>
-  );
-}
 
 export default LandingSideSocialLinks;

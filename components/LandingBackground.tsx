@@ -2,6 +2,14 @@ import React from 'react';
 import { layout } from './LandingIntro';
 import { css } from '@emotion/react';
 
+function LandingBackground() {
+  return (
+    <section css={[layout, bgStyle]}>
+      <h1>Background</h1>
+    </section>
+  );
+}
+
 export const bgStyle = css`
   background-color: inherit;
   display: flex;
@@ -18,13 +26,5 @@ export const bgStyle = css`
     color: white;
   }
 `;
-
-function LandingBackground() {
-  return (
-    <section css={[layout, bgStyle]}>
-      <h1>Background</h1>
-    </section>
-  );
-}
 
 export default LandingBackground;
