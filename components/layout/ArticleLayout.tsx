@@ -31,7 +31,9 @@ export default function ArticleLayout({
     };
   }, []);
   const headerBgColor = onScroll ? '#191919' : 'inherit';
-  const headerTextColor = onScroll ? 'var(--color-text-header)' : 'inherit';
+  const headerTextColor = onScroll
+    ? 'var(--color-text-header-on-scroll)'
+    : 'inherit';
   const displayProgressBar = showProgress ? 'visible' : 'none';
   return (
     <>

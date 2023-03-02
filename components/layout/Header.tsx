@@ -59,7 +59,7 @@ const linkContainer = css`
 `;
 
 const logo = css`
-  color: var(--color-text-header);
+  color: var(--color-text);
   :visited {
     color: inherit;
   }
@@ -68,9 +68,9 @@ const logo = css`
 const link = css`
   padding: 11px 16px;
   border-radius: 6px;
-  color: var(--color-text-header);
+  color: var(--color-text);
   :visited {
-    color: var(--color-text-header);
+    color: var(--color-text);
   }
   :hover {
     transition: 0.15s;

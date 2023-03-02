@@ -44,7 +44,7 @@ export function GlobalStyles() {
           },
           'body, body[data-theme="light"]': {
             '--color-text': greyBlue900,
-            '--color-text-header': greyBlue900,
+            '--color-text-header-on-scroll': grey100,
             '--color-bg': grey50,
             '--color-btn-hover': grey200,
             '--color-tags': grey400,
@@ -55,7 +55,7 @@ export function GlobalStyles() {
 
           'body[data-theme="dark"]': {
             '--color-text': grey100,
-            '--color-text-header': grey100,
+            '--color-text-header-on-scroll': grey100,
             '--color-bg': grey800,
             '--color-btn-hover': grey700,
             '--color-tags': grey600,
