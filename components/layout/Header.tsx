@@ -70,7 +70,7 @@ const link = css`
   border-radius: 6px;
   color: var(--color-text);
   :visited {
-    color: var(--color-text);
+    color: inherit;
   }
   :hover {
     transition: 0.15s;
